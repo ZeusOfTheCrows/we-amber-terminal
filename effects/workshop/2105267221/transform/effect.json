@@ -1,0 +1,20 @@
+{
+	"dependencies" : 
+	[
+		"materials/workshop/2105267221/effects/transform.json",
+		"shaders/workshop/2105267221/effects/transform.frag",
+		"shaders/workshop/2105267221/effects/transform.vert"
+	],
+	"description" : "ui_editor_effect_transform_description",
+	"group" : "distort",
+	"name" : "ui_editor_effect_transform_title",
+	"passes" : 
+	[
+		{
+			"material" : "materials/workshop/2105267221/effects/transform.json"
+		}
+	],
+	"preview" : "preview/project.json",
+	"replacementkey" : "transform",
+	"version" : 1
+}

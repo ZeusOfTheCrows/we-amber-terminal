@@ -1,0 +1,26 @@
+{
+	"passes" : 
+	[
+		{
+			"blending" : "translucent",
+			"combos" : 
+			{
+				"version" : 2
+			},
+			"constantshadervalues" : 
+			{
+				"Alpha" : 1,
+				"color" : 
+				{
+					"user" : null,
+					"value" : "1.000 1.000 1.000"
+				}
+			},
+			"cullmode" : "nocull",
+			"depthtest" : "disabled",
+			"depthwrite" : "disabled",
+			"shader" : "workshop/2115341179/tint",
+			"textures" : [ "workshop/2115341179/bar" ]
+		}
+	]
+}

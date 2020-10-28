@@ -1,0 +1,159 @@
+{
+	"contentrating" : "Everyone",
+	"description" : "[code]\r\n[b]Beta, terminal contents not fully working at this stage![/b]\r\n\r\n===========================================================================\r\n\r\nI decided to rewrite my rainmeter preset into wallpaper engine for performance reasons, and I thought I'd put it up on steam workshop.\r\n\r\nRetro styled DEC VT100 terminal desktop, with clock radio. I know the VT100 wasn't amber, but I think it looks better - change it to green if you like..\r\n\r\nBackground image from [url=https://www.deviantart.com/maxcorpindustries/art/Vintage-Terminal-1-0-for-rainmeter-831562992]MaxCorpIndustries[/url], crt effects by [url=https://steamcommunity.com/sharedfiles/filedetails?id=2116673772]Zauwara/fug4life[/url].\r\n\r\n===========================================================================\r\n\r\nAll WE UI user properties should reflect properly, however actual wallpaper clickables aren't currently working. I hope to get them working at some point; please feel free to message me with how the WE Shared class works, or to request source if you think you can do better.\r\n\r\nUser properties:\r\n[list]\r\n    [*]Terminal text colour\r\n    [*]Prompt character(s)\r\n    [*]Bloom effect (toggle)\r\n    [*]Pincushion intensity\r\n    [*]Scanline intensity\r\n    [*]CRT Noise intensity\r\n    [*]Vertical separator (¦)\r\n    [*]Clock text colour\r\n    [*]Clock trunc'ed/full day\r\n[/list]\r\n[/code]",
+	"file" : "scene.json",
+	"general" : 
+	{
+		"properties" : 
+		{
+			"changeverticalbar" : 
+			{
+				"order" : 108,
+				"text" : "Change Vertical Bar",
+				"type" : "bool",
+				"value" : false
+			},
+			"clockcolour" : 
+			{
+				"order" : 110,
+				"text" : "Clock Colour",
+				"type" : "color",
+				"value" : "1 0 0"
+			},
+			"clocktextglow" : 
+			{
+				"fraction" : true,
+				"max" : 1,
+				"min" : 0,
+				"order" : 112,
+				"precision" : 2,
+				"step" : 0.10000000000000001,
+				"text" : "Clock Text Glow (May clash with bloom)",
+				"type" : "slider",
+				"value" : 0.10000000000000001
+			},
+			"clockusesfullday" : 
+			{
+				"order" : 111,
+				"text" : "Clock Uses Long Day",
+				"type" : "bool",
+				"value" : true
+			},
+			"crteffects" : 
+			{
+				"order" : 103,
+				"text" : "CRT Effects",
+				"type" : "bool",
+				"value" : true
+			},
+			"crtnoise" : 
+			{
+				"condition" : "crteffects.value == true",
+				"fraction" : true,
+				"max" : 1,
+				"min" : 0,
+				"order" : 106,
+				"precision" : 2,
+				"step" : 0.10000000000000001,
+				"text" : "CRT Noise",
+				"type" : "slider",
+				"value" : 0.20000000000000001
+			},
+			"lampglow" : 
+			{
+				"fraction" : true,
+				"max" : 0.5,
+				"min" : 0,
+				"order" : 113,
+				"precision" : 2,
+				"step" : 0.10000000000000001,
+				"text" : "Lamp Glow (May clash with bloom)",
+				"type" : "slider",
+				"value" : 0.32000000000000001
+			},
+			"pincushioneffect" : 
+			{
+				"condition" : "crteffects.value == true",
+				"fraction" : true,
+				"max" : 1,
+				"min" : 0,
+				"order" : 104,
+				"precision" : 2,
+				"step" : 0.10000000000000001,
+				"text" : "Pincushion Effect",
+				"type" : "slider",
+				"value" : 0.23999999999999999
+			},
+			"prompt" : 
+			{
+				"order" : 101,
+				"text" : "Prompt",
+				"type" : "textinput",
+				"value" : ">"
+			},
+			"scanlineintensity" : 
+			{
+				"condition" : "crteffects.value == true",
+				"fraction" : true,
+				"max" : 0.5,
+				"min" : 0,
+				"order" : 105,
+				"precision" : 2,
+				"step" : 0.10000000000000001,
+				"text" : "Scanline Intensity",
+				"type" : "slider",
+				"value" : 0.12
+			},
+			"schemecolor" : 
+			{
+				"order" : 100,
+				"text" : "ui_browse_properties_scheme_color",
+				"type" : "color",
+				"value" : "0.9215686274509803 0.5686274509803921 0.011764705882352941"
+			},
+			"terminaltextglow" : 
+			{
+				"condition" : "crteffects.value == true",
+				"fraction" : true,
+				"max" : 1,
+				"min" : 0,
+				"order" : 107,
+				"precision" : 2,
+				"step" : 0.10000000000000001,
+				"text" : "Terminal Text Glow (May clash with bloom)",
+				"type" : "slider",
+				"value" : 0.10000000000000001
+			},
+			"textcolour" : 
+			{
+				"order" : 100,
+				"text" : "Terminal Colour",
+				"type" : "color",
+				"value" : "0.9215686274509803 0.5686274509803921 0.011764705882352941"
+			},
+			"textgloweffect" : 
+			{
+				"order" : 102,
+				"text" : "Universal Bloom",
+				"type" : "bool",
+				"value" : true
+			},
+			"verticalbar" : 
+			{
+				"condition" : "changeverticalbar.value == true",
+				"order" : 109,
+				"text" : "VerticalBar",
+				"type" : "textinput",
+				"value" : "¦"
+			}
+		}
+	},
+	"preview" : "preview.jpg",
+	"tags" : [ "Retro" ],
+	"title" : "Amber Terminal",
+	"type" : "scene",
+	"version" : 1,
+	"visibility" : "public",
+	"workshopid" : "2268178377",
+	"workshopurl" : "steam://url/CommunityFilePage/2268178377"
+}

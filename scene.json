@@ -1,0 +1,1163 @@
+{
+	"camera" : 
+	{
+		"center" : "0.000 0.000 -1.000",
+		"eye" : "0.000 0.000 0.000",
+		"up" : "0.000 1.000 0.000"
+	},
+	"general" : 
+	{
+		"ambientcolor" : "0.300 0.300 0.300",
+		"bloom" : 
+		{
+			"user" : "textgloweffect",
+			"value" : true
+		},
+		"bloomstrength" : 2.0,
+		"bloomthreshold" : 0.64999997615814209,
+		"camerafade" : true,
+		"cameraparallax" : false,
+		"cameraparallaxamount" : 0.5,
+		"cameraparallaxdelay" : 0.10000000149011612,
+		"cameraparallaxmouseinfluence" : 0.0,
+		"camerapreview" : true,
+		"camerashake" : false,
+		"camerashakeamplitude" : 0.5,
+		"camerashakeroughness" : 1.0,
+		"camerashakespeed" : 3.0,
+		"clearcolor" : "0.000 0.000 0.000",
+		"clearenabled" : true,
+		"farz" : 10000.0,
+		"fov" : 50.0,
+		"nearz" : 0.0099999997764825821,
+		"orthogonalprojection" : 
+		{
+			"height" : 2160,
+			"width" : 3840
+		},
+		"skylightcolor" : "0.300 0.300 0.300",
+		"zoom" : 1.0
+	},
+	"objects" : 
+	[
+		{
+			"alignment" : "center",
+			"alpha" : 1.0,
+			"angles" : "0.000 0.000 0.000",
+			"color" : "1.000 1.000 1.000",
+			"colorBlendMode" : 0,
+			"copybackground" : true,
+			"id" : 97,
+			"image" : "models/wallpaper-small.json",
+			"ledsource" : false,
+			"locktransforms" : true,
+			"name" : "Background Image",
+			"origin" : "1920.000 1080.000 0.000",
+			"parallaxDepth" : "1.000 1.000",
+			"perspective" : false,
+			"scale" : "1.000 1.000 1.000",
+			"size" : "3840.000 2160.000",
+			"solid" : true,
+			"visible" : true
+		},
+		{
+			"alignment" : "center",
+			"alpha" : 1.0,
+			"angles" : "0.000 0.000 0.000",
+			"color" : "1.000 1.000 1.000",
+			"colorBlendMode" : 0,
+			"copybackground" : true,
+			"id" : 27,
+			"image" : "models/term.json",
+			"ledsource" : false,
+			"locktransforms" : true,
+			"name" : "Guide",
+			"origin" : "1920.000 1080.000 0.000",
+			"parallaxDepth" : "1.000 1.000",
+			"perspective" : false,
+			"scale" : "1.500 1.500 0.000",
+			"size" : "2560.000 1440.000",
+			"solid" : true,
+			"visible" : false
+		},
+		{
+			"alpha" : 1.0,
+			"anchor" : "none",
+			"angles" : "0.000 0.000 0.000",
+			"backgroundcolor" : "0.000 0.000 0.000",
+			"color" : 
+			{
+				"script" : "'use strict';\n\n/**\n * @param {Vec3} value - for property 'color'\n */\nexport function update(value) {\n\t//Colour is set in terminal screen vfx, please don't edit here\n\treturn value;\n}\n",
+				"value" : "1.000 1.000 1.000"
+			},
+			"colorBlendMode" : 0,
+			"copybackground" : true,
+			"effects" : 
+			[
+				{
+					"file" : "effects/scroll/effect.json",
+					"id" : 90,
+					"name" : "Screen Remove",
+					"passes" : 
+					[
+						{
+							"constantshadervalues" : 
+							{
+								"repeat" : "1 1",
+								"speedx" : 0,
+								"speedy" : 0.44
+							},
+							"id" : 91
+						}
+					],
+					"visible" : false
+				}
+			],
+			"font" : "fonts/FSEX302-alt.ttf",
+			"horizontalalign" : "left",
+			"id" : 41,
+			"ledsource" : false,
+			"locktransforms" : true,
+			"name" : "Output  Header",
+			"opaquebackground" : true,
+			"origin" : "1332.000 1546.000 0.000",
+			"padding" : 32,
+			"parallaxDepth" : "1.000 1.000",
+			"perspective" : false,
+			"pointsize" : 9.0,
+			"scale" : "1.000 1.000 1.000",
+			"size" : "612.000 76.000",
+			"solid" : true,
+			"text" : 
+			{
+				"script" : "'use strict';\n\n/**\n * @param {String} value - for property 'text'\n */\nvar page0Header = \"Mem check... 8192 of 8192 bytes OK\\nAwaiting user input:\\n\";\nvar page1Header = \"VT100 (c) Basic Operating System Media Player\\nAwaiting user input\\n\";\n\n//I couldn't work out how to use the purported \"Shared\" object, so this\n// my not be the best way to do this...\nexport var currentPage = 0; //0 = main, 1 = music, 2 = undecided, 3 = prefs\n\nexport function update(value) {\n\tif (currentPage == 0){\n\t\tvalue = page0Header;\n\t} else if (currentPage == 1){\n\t\tvalue = page1Header;\n\t};\n\n\t//value.x = thisScene.getLayer('mplayer_skin_plain').origin.x;\n\treturn value;\n}\n",
+				"value" : "Mem check... 8192 of 8192 bytes OK\nAwaiting user input:"
+			},
+			"verticalalign" : "top",
+			"visible" : true
+		},
+		{
+			"alpha" : 1.0,
+			"anchor" : "none",
+			"angles" : "0.000 0.000 0.000",
+			"backgroundcolor" : "0.000 0.000 0.000",
+			"color" : 
+			{
+				"script" : "'use strict';\n\n/**\n * @param {Vec3} value - for property 'color'\n */\nexport function update(value) {\n\t//Colour is set in terminal screen vfx, please don't edit here\n\treturn value;\n}\n",
+				"value" : "1.000 1.000 1.000"
+			},
+			"colorBlendMode" : 0,
+			"copybackground" : true,
+			"effects" : 
+			[
+				{
+					"file" : "effects/scroll/effect.json",
+					"id" : 145,
+					"name" : "Screen Remove",
+					"passes" : 
+					[
+						{
+							"constantshadervalues" : 
+							{
+								"repeat" : "1 1",
+								"speedx" : 0,
+								"speedy" : 0.44
+							},
+							"id" : 146
+						}
+					],
+					"visible" : false
+				}
+			],
+			"font" : "fonts/FSEX302-alt.ttf",
+			"horizontalalign" : "left",
+			"id" : 144,
+			"ledsource" : false,
+			"locktransforms" : true,
+			"name" : "Output  SubHeader",
+			"opaquebackground" : false,
+			"origin" : "1332.000 1470.000 0.000",
+			"padding" : 32,
+			"parallaxDepth" : "1.000 1.000",
+			"perspective" : false,
+			"pointsize" : 9.0,
+			"scale" : "1.000 1.000 1.000",
+			"size" : "865.000 114.000",
+			"solid" : true,
+			"text" : 
+			{
+				"script" : "'use strict';\n\n/**\n * @param {String} value - for property 'text'\n */\nvar output = \"\";\n\nexport var scriptProperties = createScriptProperties()\n\t.addText({\n\t\tname: 'divider',\n\t\tlabel: 'Vertical Divider',\n\t\tvalue: '¦'\n\t})\n\t.finish();\n\nexport function update(value) {\n\toutput = \"+--------+-------------------------------------+\\n\"\n\t\t\t+ scriptProperties.divider + \" Num    \" + scriptProperties.divider +\" Select from following options       \"\n\t\t\t+ scriptProperties.divider + \"\\n+--------+-------------------------------------+\\n\";\n\treturn output;\n}\n",
+				"scriptproperties" : 
+				{
+					"divider" : 
+					{
+						"user" : "verticalbar",
+						"value" : "¦"
+					}
+				},
+				"value" : "+--------+-------------------------------------+\n¦ Num    ¦ Option                              ¦\n+--------+-------------------------------------+"
+			},
+			"verticalalign" : "top",
+			"visible" : true
+		},
+		{
+			"alpha" : 1.0,
+			"anchor" : "none",
+			"angles" : "0.000 0.000 0.000",
+			"backgroundcolor" : 
+			{
+				"script" : "'use strict';\n\nvar visibleColour = new Vec3(0, 0, 0);\n\nexport function cursorEnter(event) {\n\tvisibleColour = new Vec3(1, 1, 1);\n\treturn visibleColour;\n}\nexport function cursorLeave(event) {\n\tvisibleColour = new Vec3(0, 0, 0);\n\treturn visibleColour;\t\n}\n\nexport function update(value) {\n\treturn visibleColour;\n}",
+				"value" : "0.000 0.000 0.000"
+			},
+			"color" : 
+			{
+				"script" : "'use strict';\n\nvar visibleColour = new Vec3(1, 1, 1);\n\nexport function cursorEnter(event) {\n\tvisibleColour = new Vec3(0, 0, 0);\n\treturn visibleColour;\n}\nexport function cursorLeave(event) {\n\tvisibleColour = new Vec3(1, 1, 1);\n\treturn visibleColour;\n}\n\nexport function update(value) {\n\t//Colour is set in terminal screen vfx, please don't edit here\n\treturn visibleColour;\n}",
+				"value" : "1.000 1.000 1.000"
+			},
+			"colorBlendMode" : 0,
+			"copybackground" : true,
+			"effects" : 
+			[
+				{
+					"file" : "effects/scroll/effect.json",
+					"id" : 150,
+					"name" : "Screen Remove",
+					"passes" : 
+					[
+						{
+							"constantshadervalues" : 
+							{
+								"repeat" : "1 1",
+								"speedx" : 0,
+								"speedy" : 0.44
+							},
+							"id" : 151
+						}
+					],
+					"visible" : false
+				}
+			],
+			"font" : "fonts/FSEX302-alt.ttf",
+			"horizontalalign" : "left",
+			"id" : 149,
+			"ledsource" : false,
+			"locktransforms" : true,
+			"name" : "Output Line 0",
+			"opaquebackground" : true,
+			"origin" : "1332.000 1356.000 0.000",
+			"padding" : 32,
+			"parallaxDepth" : "1.000 1.000",
+			"perspective" : false,
+			"pointsize" : 9.0,
+			"scale" : "1.000 1.000 1.000",
+			"size" : "865.000 38.000",
+			"solid" : true,
+			"text" : 
+			{
+				"script" : "'use strict';\n\nvar selectedThisPage = false;\nvar testOutput = \" This is not working                 \";\n\nexport var scriptProperties = createScriptProperties()\n\t.addText({\n\t\tname: 'divider',\n\t\tlabel: 'Vertical Divider',\n\t\tvalue: '¦'\n\t})\n\t.finish();\n\nexport function cursorClick(_event) {\n\tselectedThisPage = !selectedThisPage;\n\t//thisScene.getLayer(2).currentPage = 1;\n\ttestOutput = thisScene.getLayer(2).currentPage;  //.currentPage = 1;\n}\n\nexport function update(value) {\n\tif(selectedThisPage){\n\t\tvalue = scriptProperties.divider + \"     01 \" +  scriptProperties.divider + testOutput + scriptProperties.divider;\n\t}\n\t//else if(thisScene.getLayer('Output Line 1').selectedThisPage){\n\t//\toutput = scriptProperties.divider + \"     01 \" +  scriptProperties.divider + \" Calendar Test                       \" + scriptProperties.divider;\n\t//}\n\telse{\n\t\tvalue = scriptProperties.divider + \"     01 \" +  scriptProperties.divider + \" Music Player                        \" + scriptProperties.divider;\n\t}\n\treturn value;\n}\n",
+				"scriptproperties" : 
+				{
+					"divider" : 
+					{
+						"user" : "verticalbar",
+						"value" : "¦"
+					}
+				},
+				"value" : "¦     01 ¦ Enjoy my terrible                   ¦"
+			},
+			"verticalalign" : "top",
+			"visible" : 
+			{
+				"script" : "'use strict';\n\n/**\n * @param {Boolean} value - for property 'visible'\n */\nexport var selectedThisPage = false\n\nexport function update(value) {\n\t\n\treturn value;\n}\n\n/**\n * @param {ICursorEvent} event\n */\nexport function cursorClick(event) {\n\tselectedThisPage =true;\n}\n",
+				"value" : true
+			}
+		},
+		{
+			"alpha" : 1.0,
+			"anchor" : "none",
+			"angles" : "0.000 0.000 0.000",
+			"backgroundcolor" : 
+			{
+				"script" : "'use strict';\n\nvar visibleColour = new Vec3(0, 0, 0);\n\nexport function cursorEnter(event) {\n\tvisibleColour = new Vec3(1, 1, 1);\n\treturn visibleColour;\n}\nexport function cursorLeave(event) {\n\tvisibleColour = new Vec3(0, 0, 0);\n\treturn visibleColour;\t\n}\n\nexport function update(value) {\n\treturn visibleColour;\n}",
+				"value" : "0.000 0.000 0.000"
+			},
+			"color" : 
+			{
+				"script" : "'use strict';\n\nvar visibleColour = new Vec3(1, 1, 1);\n\nexport function cursorEnter(event) {\n\tvisibleColour = new Vec3(0, 0, 0);\n\treturn visibleColour;\n}\nexport function cursorLeave(event) {\n\tvisibleColour = new Vec3(1, 1, 1);\n\treturn visibleColour;\t\n}\n\nexport function update(value) {\n\t//Colour is set in terminal screen vfx, please don't edit here\n\treturn visibleColour;\n}",
+				"value" : "1.000 1.000 1.000"
+			},
+			"colorBlendMode" : 0,
+			"copybackground" : true,
+			"effects" : 
+			[
+				{
+					"file" : "effects/scroll/effect.json",
+					"id" : 127,
+					"name" : "Screen Remove",
+					"passes" : 
+					[
+						{
+							"constantshadervalues" : 
+							{
+								"repeat" : "1 1",
+								"speedx" : 0,
+								"speedy" : 0.44
+							},
+							"id" : 128
+						}
+					],
+					"visible" : false
+				}
+			],
+			"font" : "fonts/FSEX302-alt.ttf",
+			"horizontalalign" : "left",
+			"id" : 126,
+			"ledsource" : false,
+			"locktransforms" : true,
+			"name" : "Output Line 1",
+			"opaquebackground" : true,
+			"origin" : "1332.000 1318.000 0.000",
+			"padding" : 32,
+			"parallaxDepth" : "1.000 1.000",
+			"perspective" : false,
+			"pointsize" : 9.0,
+			"scale" : "1.000 1.000 1.000",
+			"size" : "865.000 38.000",
+			"solid" : true,
+			"text" : 
+			{
+				"script" : "'use strict';\n\nvar selectedThisPage = false;\n\nexport var scriptProperties = createScriptProperties()\n\t.addText({\n\t\tname: 'divider',\n\t\tlabel: 'Vertical Divider',\n\t\tvalue: '¦'\n\t})\n\t.finish();\n\nexport function cursorClick(event) {\n\tselectedThisPage = !selectedThisPage;\n}\n\nexport function update(value) {\n\tif(selectedThisPage){\n\t\tvalue = scriptProperties.divider + \"     02 \" +  scriptProperties.divider + \" Coming Soon (Maybe)                 \" + scriptProperties.divider;\n\t}\n\telse{\n\t\tvalue = scriptProperties.divider + \"     02 \" +  scriptProperties.divider + \" Autotype                            \" + scriptProperties.divider;\n\t}\n\treturn value;\n}\n",
+				"scriptproperties" : 
+				{
+					"divider" : 
+					{
+						"user" : "verticalbar",
+						"value" : "¦"
+					}
+				},
+				"value" : "¦     02 ¦ attempts at coding                  ¦"
+			},
+			"verticalalign" : "top",
+			"visible" : true
+		},
+		{
+			"alpha" : 1.0,
+			"anchor" : "none",
+			"angles" : "0.000 0.000 0.000",
+			"backgroundcolor" : 
+			{
+				"script" : "'use strict';\n\nvar visibleColour = new Vec3(0, 0, 0);\n\nexport function cursorEnter(event) {\n\tvisibleColour = new Vec3(1, 1, 1);\n\treturn visibleColour;\n}\nexport function cursorLeave(event) {\n\tvisibleColour = new Vec3(0, 0, 0);\n\treturn visibleColour;\t\n}\n\nexport function update(value) {\n\treturn visibleColour;\n}",
+				"value" : "0.000 0.000 0.000"
+			},
+			"color" : 
+			{
+				"script" : "'use strict';\n\nvar visibleColour = new Vec3(1, 1, 1);\n\nexport function cursorEnter(event) {\n\tvisibleColour = new Vec3(0, 0, 0);\n\treturn visibleColour;\n}\nexport function cursorLeave(event) {\n\tvisibleColour = new Vec3(1, 1, 1);\n\treturn visibleColour;\t\n}\n\nexport function update(value) {\n\t//Colour is set in terminal screen vfx, please don't edit here\n\treturn visibleColour;\n}",
+				"value" : "1.000 1.000 1.000"
+			},
+			"colorBlendMode" : 0,
+			"copybackground" : true,
+			"font" : "fonts/FSEX302-alt.ttf",
+			"horizontalalign" : "left",
+			"id" : 78,
+			"ledsource" : false,
+			"locktransforms" : true,
+			"name" : "Output Line 2",
+			"opaquebackground" : true,
+			"origin" : "1332.000 1280.000 0.000",
+			"padding" : 32,
+			"parallaxDepth" : "1.000 1.000",
+			"perspective" : false,
+			"pointsize" : 9.0,
+			"scale" : "1.000 1.000 1.000",
+			"size" : "865.000 38.000",
+			"solid" : true,
+			"text" : 
+			{
+				"script" : "\n'use strict';\n\nvar selectedThisPage = false;\n\nexport var scriptProperties = createScriptProperties()\n\t.addText({\n\t\tname: 'divider',\n\t\tlabel: 'Vertical Divider',\n\t\tvalue: '¦'\n\t})\n\t.finish();\n\nexport function cursorClick(event) {\n\tselectedThisPage = !selectedThisPage;\n}\n\nexport function update(value) {\n\tif(selectedThisPage){\n\t\tvalue = scriptProperties.divider + \"     03 \" +  scriptProperties.divider + \" Coming Soon (Maybe)                 \" + scriptProperties.divider;\n\t}\n\telse{\n\t\tvalue = scriptProperties.divider + \"     03 \" +  scriptProperties.divider + \" User Preferences                    \" + scriptProperties.divider;\n\t}\n\treturn value;\n}\n",
+				"scriptproperties" : 
+				{
+					"divider" : 
+					{
+						"user" : "verticalbar",
+						"value" : "¦"
+					}
+				},
+				"value" : "¦     03 ¦ in javascript...                    ¦"
+			},
+			"verticalalign" : "top",
+			"visible" : true
+		},
+		{
+			"alpha" : 1.0,
+			"anchor" : "none",
+			"angles" : "0.000 0.000 0.000",
+			"backgroundcolor" : 
+			{
+				"script" : "'use strict';\n\nvar visibleColour = new Vec3(0, 0, 0);\nvar clickedThisFrame = false;\n\nexport function cursorEnter(event) {\n\tvisibleColour = new Vec3(1, 1, 1);\n\treturn visibleColour;\n}\nexport function cursorLeave(event) {\n\tvisibleColour = new Vec3(0, 0, 0);\n\treturn visibleColour;\t\n}\n\nexport function cursorClick(event) {\n\tclickedThisFrame = true;\n\tvisibleColour = new Vec3(0, 0, 0);\n\treturn visibleColour;\t\n}\n\nexport function update(value) {\n\t\treturn visibleColour;\n}",
+				"value" : "0.000 0.000 0.000"
+			},
+			"color" : 
+			{
+				"script" : "'use strict';\n\n/**\n * @param {Vec3} value - for property 'color'\n */\nexport function update(value) {\n\t//Colour is set in terminal screen vfx, please don't edit here\n\treturn value;\n}\n",
+				"value" : "1.000 1.000 1.000"
+			},
+			"colorBlendMode" : 0,
+			"copybackground" : true,
+			"effects" : 
+			[
+				{
+					"file" : "effects/scroll/effect.json",
+					"id" : 83,
+					"name" : "Screen Remove",
+					"passes" : 
+					[
+						{
+							"constantshadervalues" : 
+							{
+								"repeat" : "1 1",
+								"speedx" : 0,
+								"speedy" : 0.44
+							},
+							"id" : 84
+						}
+					],
+					"visible" : false
+				}
+			],
+			"font" : "fonts/FSEX302-alt.ttf",
+			"horizontalalign" : "left",
+			"id" : 82,
+			"ledsource" : false,
+			"locktransforms" : true,
+			"name" : "Output Line Final",
+			"opaquebackground" : false,
+			"origin" : "1332.000 1242.000 0.000",
+			"padding" : 32,
+			"parallaxDepth" : "1.000 1.000",
+			"perspective" : false,
+			"pointsize" : 9.0,
+			"scale" : "1.000 1.000 1.000",
+			"size" : "864.000 38.000",
+			"solid" : true,
+			"text" : "+--------+-------------------------------------+",
+			"verticalalign" : "top",
+			"visible" : true
+		},
+		{
+			"alpha" : 1.0,
+			"anchor" : "none",
+			"angles" : "0.000 0.000 0.000",
+			"backgroundcolor" : "0.000 0.000 0.000",
+			"color" : 
+			{
+				"script" : "'use strict';\n\n/**\n * @param {Vec3} value - for property 'color'\n */\nexport function update(value) {\n\t//Colour is set in terminal screen vfx, please don't edit here\n\treturn value;\n}\n",
+				"value" : "1.000 1.000 1.000"
+			},
+			"colorBlendMode" : 0,
+			"copybackground" : true,
+			"font" : "fonts/FSEX302-alt.ttf",
+			"horizontalalign" : "left",
+			"id" : 140,
+			"ledsource" : false,
+			"locktransforms" : true,
+			"name" : "Input",
+			"opaquebackground" : true,
+			"origin" : "1332.000 1090.000 0.000",
+			"padding" : 32,
+			"parallaxDepth" : "1.000 1.000",
+			"perspective" : false,
+			"pointsize" : 9.0,
+			"scale" : "1.000 1.000 1.000",
+			"size" : "595.000 38.000",
+			"solid" : true,
+			"text" : 
+			{
+				"script" : "'use strict';\n\nexport var scriptProperties = createScriptProperties()\n\t.addText({\n\t\tname: 'prompt',\n\t\tlabel: 'Prompt',\n\t\tvalue: '>'\n\t})\n\t.addText({\n\t\tname: 'blinkCursorOn',\n\t\tlabel: 'Cursor On',\n\t\tvalue: '█'\n\t})\n\t.addText({\n\t\tname: 'blinkCursorOff',\n\t\tlabel: 'Cursor Off',\n\t\tvalue: '_'\n\t})\n\t.finish();\n\nvar blinkCursors = [scriptProperties.blinkCursorOn, scriptProperties.blinkCursorOff]\n\nexport function update(value) {\n\tlet time = new Date();\n\tvar prompt = scriptProperties.prompt;\n\tvar blinkingCursor = blinkCursors[(time.getSeconds()%2)];\n\n\tvalue = prompt + blinkingCursor;\n\n\treturn value;\n}\n",
+				"scriptproperties" : 
+				{
+					"blinkCursorOff" : "█",
+					"blinkCursorOn" : "_",
+					"prompt" : 
+					{
+						"user" : "prompt",
+						"value" : ">"
+					}
+				},
+				"value" : ">neofetch --ascii_distro windows_"
+			},
+			"verticalalign" : "top",
+			"visible" : true
+		},
+		{
+			"alpha" : 1.0,
+			"anchor" : "none",
+			"angles" : "0.000 0.000 0.000",
+			"backgroundcolor" : "0.000 0.000 0.000",
+			"color" : "1.000 1.000 1.000",
+			"colorBlendMode" : 0,
+			"copybackground" : true,
+			"effects" : 
+			[
+				{
+					"file" : "effects/scroll/effect.json",
+					"id" : 173,
+					"name" : "Screen Scroll",
+					"passes" : 
+					[
+						{
+							"constantshadervalues" : 
+							{
+								"repeat" : "1 1",
+								"speedx" : 0,
+								"speedy" : 0.20000000000000001
+							},
+							"id" : 174
+						}
+					],
+					"visible" : false
+				},
+				{
+					"file" : "effects/opacity/effect.json",
+					"id" : 236,
+					"name" : "",
+					"passes" : 
+					[
+						{
+							"id" : 237,
+							"textures" : [ null, "masks/opacity_mask_031a717cd7715ec69f2973ec9d2b017300776b2b" ]
+						}
+					],
+					"visible" : false
+				}
+			],
+			"font" : "fonts/FSEX302-alt.ttf",
+			"horizontalalign" : "left",
+			"id" : 172,
+			"ledsource" : false,
+			"locktransforms" : true,
+			"name" : "Autotyped Code",
+			"opaquebackground" : true,
+			"origin" : "1332.000 1546.000 0.000",
+			"padding" : 32,
+			"parallaxDepth" : "1.000 1.000",
+			"perspective" : false,
+			"pointsize" : 9.0,
+			"scale" : "1.000 1.000 1.000",
+			"size" : "2.000 2.000",
+			"solid" : true,
+			"text" : 
+			{
+				"script" : "'use strict';\n\nexport var scriptProperties = createScriptProperties()\n\t.addSlider({\n\t\tname: 'outputNoOfLines',\n\t\tlabel: 'Number of lines',\n\t\tvalue: 13,\n\t\tmin: 0,\n\t\tmax: 15,\n\t\tinteger: false\n\t})\n\t.finish();\n\n//I don't like it being boxed in vertical bars either, but\n// WE eats leading spaces and I couldn't find a workaround.\nvar completeOutput = \n\"¦struct group_info init_groups={               ¦\\n\\\n¦  .usage=ATOMIC_INIT(2)                       ¦\\n\\\n¦};                                            ¦\\n\\\n¦                                              ¦\\n\\\n¦struct group_info                             ¦\\n\\\n¦    *groups_alloc(int gidsetsize){            ¦\\n\\\n¦  struct group_info *group_info;              ¦\\n\\\n¦  int nblocks;                                ¦\\n\\\n¦  int i;                                      ¦\\n\\\n¦                                              ¦\\n\\\n¦  nblocks=(                                   ¦\\n\\\n¦    gidsetsize+NGROUPS_PER_BLOCK-1            ¦\\n\\\n¦  )/NGROUPS_PER_BLOCK;                        ¦\\n\\\n¦                                              ¦\\n\\\n¦  /* Make sure we always allocate at          ¦\\n\\\n¦  least one indirect block pointer */         ¦\\n\\\n¦                                              ¦\\n\\\n¦  nblocks=nblocks ? : 1;                      ¦\\n\\\n¦  group_info=kmalloc(sizeof(*group_info)      ¦\\n\\\n¦  +nblocks*sizeof(gid_t *), GFP_USER);        ¦\\n\\\n¦  if (!group_info){                           ¦\\n\\\n¦    return NULL;                              ¦\\n\\\n¦  }                                           ¦\\n\\\n¦  group_info->ngroups=gidsetsize;             ¦\\n\\\n¦  group_info->nblocks=nblocks;                ¦\\n\\\n¦  atomic_set(&group_info->usage, 1);          ¦\\n\\\n¦                                              ¦\\n\\\n¦  if (gidsetsize<=NGROUPS_SMALL){             ¦\\n\\\n¦    group_info->blocks[0]=                    ¦\\n\\\n¦       group_info->small_block;               ¦\\n\\\n¦  } else {                                    ¦\\n\\\n¦    for (i=0; i<nblocks; i++) {               ¦\\n\\\n¦      gid_t *b;                               ¦\\n\\\n¦      b=(void *)__get_free_page(GFP_USER);    ¦\\n\\\n¦      if (!b)                                 ¦\\n\\\n¦        goto out_undo_partial_alloc;          ¦\\n\\\n¦      group_info->blocks[i]=b;                ¦\\n\\\n¦    }                                         ¦\\n\\\n¦  }                                           ¦\\n\\\n¦  return group_info;                          ¦\\n\\\n¦                                              ¦\\n\\\n¦out_undo_partial_alloc:                       ¦\\n\\\n¦  while (--i>=0) {                            ¦\\n\\\n¦    free_page((unsigned long)                 ¦\\n\\\n¦       group_info->blocks[i]);                ¦\\n\\\n¦  }                                           ¦\\n\\\n¦  kfree(group_info);                          ¦\\n\\\n¦  return NULL;                                ¦\\n\\\n¦}                                             ¦\\n\\\n¦                                              ¦\\n\\\n¦EXPORT_SYMBOL(groups_alloc);                  ¦\\n\\\n¦                                              ¦\\n\\\n¦void groups_free(                             ¦\\n\\\n¦    struct group_info *group_info)            ¦\\n\\\n¦{                                             ¦\\n\\\n¦  if (group_info->blocks[0]                   ¦\\n\\\n¦      !=group_info->small_block) {            ¦\\n\\\n¦    int i;                                    ¦\\n\\\n¦    for (i=0; i<group_info->nblocks; i++)     ¦\\n\\\n¦      free_page((unsigned long)               ¦\\n\\\n¦        group_info->blocks[i]);               ¦\\n\\\n¦  }                                           ¦\\n\\\n¦  kfree(group_info);                          ¦\\n\\\n¦}                                             ¦\\n\\\n¦                                              ¦\\n\\\n¦EXPORT_SYMBOL(groups_free);                   ¦\\n\\\n¦                                              ¦\\n\\\n¦/* export the group_info                      ¦\\n\\\n¦to a user-space array */                      ¦\\n\\\n                                               ¦\\n\\\n¦static int groups_to_user(                    ¦\\n\\\n¦    gid_t __user *grouplist,                  ¦\\n\\\n¦    const struct group_info *group_info       ¦\\n\\\n¦){                                            ¦\\n\\\n¦  int i;                                      ¦\\n\\\n¦  unsigned int count=group_info->ngroups;     ¦\\n\\\n¦                                              ¦\\n\\\n¦  for (i=0; i<group_info->nblocks; i++) {     ¦\\n\\\n¦    unsigned int cp_count=min(                ¦\\n\\\n¦        NGROUPS_PER_BLOCK, count              ¦\\n\\\n¦    );                                        ¦\\n\\\n¦    unsigned int len=cp_count*sizeof(         ¦\\n\\\n¦        *grouplist                            ¦\\n\\\n¦    );                                        ¦\\n\\\n¦                                              ¦\\n\\\n¦    if (copy_to_user(                         ¦\\n\\\n¦        grouplist, group_info->blocks[i], len ¦\\n\\\n¦    )){                                       ¦\\n\\\n¦      return -EFAULT;                         ¦\\n\\\n¦                                              ¦\\n\\\n¦    grouplist+=NGROUPS_PER_BLOCK;             ¦\\n\\\n¦    count-=cp_count;                          ¦\\n\\\n¦    }                                         ¦\\n\\\n¦}                                             ¦\\n\\\n¦return 0;                                     ¦\\n\";\n\n//I declare these outside so we're not constantly creating and\n//deleting vars for performance reasons, I don't know if this\n//is necessary\nlet i = 0;\nvar output = \"\";\n\nexport function update(value) {\n\tvalue += completeOutput.charAt(i);  // append character to give the illusion of typing\n\tif (i <= completeOutput.length){  //loops around when it gets to the end of the text\n\t\ti++;\n\t} else {\n\t\ti = 0;\n\t}\n\n\tvalue = value.substring(value.indexOf(\"\\n\")-1, value.length);\n\n\t//var outputLines = output.split(\"\\n\");\n\t//for\t(var j=output-scriptProperties.outputNoOfLines; j<scriptProperties.outputNoOfLines; j++) {\n\t//\tvalue += output[j];\n\t//}\n\n\treturn value;\n}\n",
+				"scriptproperties" : 
+				{
+					"outputNoOfLines" : 13
+				},
+				"value" : ""
+			},
+			"verticalalign" : "top",
+			"visible" : false
+		},
+		{
+			"alignment" : "center",
+			"alpha" : 1.0,
+			"angles" : "0.000 0.000 0.000",
+			"color" : "1.000 1.000 1.000",
+			"colorBlendMode" : 0,
+			"config" : 
+			{
+				"passthrough" : true
+			},
+			"copybackground" : true,
+			"effects" : 
+			[
+				{
+					"file" : "effects/tint/effect.json",
+					"id" : 93,
+					"name" : "Colourise",
+					"passes" : 
+					[
+						{
+							"combos" : 
+							{
+								"BLENDMODE" : 30
+							},
+							"constantshadervalues" : 
+							{
+								"color" : 
+								{
+									"user" : "textcolour",
+									"value" : "1.000 0.000 0.000"
+								}
+							},
+							"id" : 94
+						}
+					],
+					"visible" : true
+				},
+				{
+					"file" : "effects/fisheye/effect.json",
+					"id" : 104,
+					"name" : "Pincushion FX",
+					"passes" : 
+					[
+						{
+							"constantshadervalues" : 
+							{
+								"distortion" : 
+								{
+									"user" : "pincushioneffect",
+									"value" : 0.78000000000000003
+								}
+							},
+							"id" : 105
+						}
+					],
+					"visible" : 
+					{
+						"user" : "crteffects",
+						"value" : true
+					}
+				},
+				{
+					"file" : "effects/godrays/effect.json",
+					"id" : 186,
+					"name" : "Text Glow",
+					"passes" : 
+					[
+						{
+							"combos" : 
+							{
+								"NOISE" : 1
+							},
+							"constantshadervalues" : 
+							{
+								"noiseamount" : 0.40000000000000002,
+								"noisescale" : 3.0,
+								"noisesmoothness" : 0.20000000000000001,
+								"noisespeed" : 0,
+								"raythreshold" : 0
+							},
+							"id" : 187,
+							"textures" : [ null, "util/white", "util/clouds_256" ]
+						},
+						{
+							"combos" : 
+							{
+								"CASTER" : 0,
+								"SAMPLES" : 0
+							},
+							"constantshadervalues" : 
+							{
+								"center" : "0.5 0.5",
+								"color" : "1 1 1",
+								"rayintensity" : 
+								{
+									"user" : "terminaltextglow",
+									"value" : 0.63999998569488525
+								},
+								"raylength" : 0
+							},
+							"id" : 190
+						},
+						{
+							"combos" : 
+							{
+								"KERNEL" : 1
+							},
+							"constantshadervalues" : 
+							{
+								"blurscale" : "2 2"
+							},
+							"id" : 191
+						},
+						{
+							"combos" : 
+							{
+								"KERNEL" : 1,
+								"VERTICAL" : 1
+							},
+							"constantshadervalues" : 
+							{
+								"blurscale" : "2 2"
+							},
+							"id" : 194
+						},
+						{
+							"combos" : 
+							{
+								"BLENDMODE" : 9
+							},
+							"id" : 195,
+							"textures" : [ null, "_rt_imageLayerComposite_102_b" ]
+						}
+					],
+					"visible" : 
+					{
+						"user" : "crteffects",
+						"value" : true
+					}
+				},
+				{
+					"file" : "effects/workshop/2116673772/crt_scan_line/effect.json",
+					"id" : 192,
+					"name" : "CRT FX",
+					"passes" : 
+					[
+						{
+							"constantshadervalues" : 
+							{
+								"Noise Intensity" : 
+								{
+									"user" : "crtnoise",
+									"value" : 0.20000000000000001
+								},
+								"Noise Scale" : 1.6799999475479126,
+								"Scan Line Intensity" : 
+								{
+									"user" : "scanlineintensity",
+									"value" : 0.12
+								},
+								"Scan Line Size" : 2.5600000000000001,
+								"Scan Line Speed" : 0,
+								"Vignette Intensity" : 0.23999999999999999
+							},
+							"id" : 193
+						}
+					],
+					"visible" : 
+					{
+						"user" : "crteffects",
+						"value" : true
+					}
+				},
+				{
+					"file" : "effects/opacity/effect.json",
+					"id" : 108,
+					"name" : "Clip FX",
+					"passes" : 
+					[
+						{
+							"constantshadervalues" : 
+							{
+								"alpha" : 1
+							},
+							"id" : 109,
+							"textures" : [ null, "masks/opacity_mask_29c39f5351e23ed72b34d703d5044fc43f12c330" ]
+						}
+					],
+					"visible" : true
+				}
+			],
+			"id" : 102,
+			"image" : "models/util/composelayer.json",
+			"ledsource" : true,
+			"locktransforms" : true,
+			"name" : "Terminal Screen VFX",
+			"origin" : "1751.078 1288.610 0.000",
+			"parallaxDepth" : "1.000 1.000",
+			"perspective" : false,
+			"scale" : "1.000 1.000 1.000",
+			"size" : "1280.000 960.000",
+			"solid" : true,
+			"visible" : true
+		},
+		{
+			"alpha" : 1.0,
+			"anchor" : "none",
+			"angles" : "0.000 0.000 0.000",
+			"backgroundcolor" : "0.000 0.000 0.000",
+			"color" : "1.000 1.000 1.000",
+			"colorBlendMode" : 0,
+			"copybackground" : true,
+			"font" : "fonts/DSEG14Classic-BoldItalic.ttf",
+			"horizontalalign" : "left",
+			"id" : 154,
+			"ledsource" : false,
+			"locktransforms" : true,
+			"name" : "Clock Day",
+			"opaquebackground" : false,
+			"origin" : "348.000 1135.000 0.000",
+			"padding" : 32,
+			"parallaxDepth" : "1.000 1.000",
+			"perspective" : false,
+			"pointsize" : 5.5,
+			"scale" : "1.000 1.000 1.000",
+			"size" : "145.000 25.000",
+			"solid" : true,
+			"text" : 
+			{
+				"script" : "/*------------------------------------------------------------------\\\n|          Not my script, all credit goes to fug4life:              |\n|(https://steamcommunity.com/sharedfiles/filedetails/?id=2192230436)|\n\\------------------------------------------------------------------*/\n\n// Usage:\n// Bind to a Text Layer, Text Property (to the right of where you can enter text, click on the gear/cog icon and select bind script). Compile the script to ensure Script Properties show up in editor. Run Scripts to view live in editor or Apply Wallpaper to view live on Desktop.\n\n'use strict';\n\nexport let __workshopId = '2108644365';\n\n\nexport var scriptProperties = createScriptProperties()\n  .addCheckbox({\n    name: 'useFullDay',\n    label: 'Use Full Day',\n    value: true\n  })\n  .finish();\n\nlet day = [];\nlet date = new Date();\n\nexport function update(value) {\n  if (scriptProperties.useFullDay) {\n    //array of weekdays must start with sunday, not monday (JS limitation)\n    day = [\n      'Sunday',\n      'Monday',\n      'Tuesday',\n      'Wednesday',\n      'Thursday',\n      'Friday',\n      'Saturday'\n    ]\n  }\n  else {\n    day = [\n      'Sun',\n      'Mon',\n      'Tue',\n      'Wed',\n      'Thu',\n      'Fri',\n      'Sat'\n    ]\n  }\n\n  return day[date.getDay()];\n}\n\n",
+				"scriptproperties" : 
+				{
+					"useFullDay" : 
+					{
+						"user" : "clockusesfullday",
+						"value" : true
+					}
+				},
+				"value" : "Saturday"
+			},
+			"verticalalign" : "center",
+			"visible" : true
+		},
+		{
+			"alpha" : 1.0,
+			"anchor" : "none",
+			"angles" : "0.000 0.000 0.000",
+			"backgroundcolor" : "0.000 0.000 0.000",
+			"color" : "1.000 1.000 1.000",
+			"colorBlendMode" : 0,
+			"copybackground" : true,
+			"font" : "fonts/DSEG14Classic-BoldItalic.ttf",
+			"horizontalalign" : "center",
+			"id" : 279,
+			"ledsource" : false,
+			"locktransforms" : true,
+			"name" : "Clock Date",
+			"opaquebackground" : false,
+			"origin" : "808.000 1138.000 0.000",
+			"padding" : 32,
+			"parallaxDepth" : "1.000 1.000",
+			"perspective" : false,
+			"pointsize" : 5.5,
+			"scale" : "1.000 1.000 1.000",
+			"size" : "181.000 25.000",
+			"solid" : true,
+			"text" : 
+			{
+				"script" : "/*------------------------------------------------------------------\\\n|          Not my script, all credit goes to fug4life:              |\n|(https://steamcommunity.com/sharedfiles/filedetails/?id=2192230436)|\n\\------------------------------------------------------------------*/\n\n// Usage: Some exported vars may not work, I've twiddled with the code a bit for my own purposes\n// Bind to a Text Layer, Text Property (to the right of where you can enter text, click on the gear/cog icon and select bind script). Compile the script to ensure Script Properties show up in editor. Run Scripts to view live in editor or Apply Wallpaper to view live on Desktop.\n\n'use strict';\n\nexport let __workshopId = '2108644365';\n\nexport var scriptProperties = createScriptProperties()\n  .addCheckbox({\n    name: 'useDelimiter',\n    label: 'Use Delimiter',\n    value: true\n  })\n  .addText({\n    name: 'addDelimiter',\n    label: 'Delimiter',\n    value: '-'\n  })\n  .finish();\n\nvar delimiterValue;\n\n\nfunction leftPad(numToPad) {\n  return (\"00\" + numToPad).slice(-2);\n}\n\n\nexport function update(value) {\n  \n  if (scriptProperties.useDelimiter == true) {\n    delimiterValue = scriptProperties.addDelimiter\n  }\n  else {\n    delimiterValue = \" \";\n  }\n  \n  let date = new Date(); {\n    let returnVal = \"\";\n    returnVal += date.getFullYear() + delimiterValue + leftPad(date.getDate()) + delimiterValue + leftPad(date.getMonth()+1);\n    \n    return returnVal;\n  }\n}\n",
+				"scriptproperties" : 
+				{
+					"addDelimiter" : "-",
+					"useDelimiter" : true
+				},
+				"value" : "2020-24-10"
+			},
+			"verticalalign" : "center",
+			"visible" : true
+		},
+		{
+			"alpha" : 1.0,
+			"anchor" : "none",
+			"angles" : "0.000 0.000 0.000",
+			"backgroundcolor" : "0.000 0.000 0.000",
+			"color" : "1.000 1.000 1.000",
+			"colorBlendMode" : 0,
+			"copybackground" : true,
+			"font" : "fonts/DSEG7Classic-BoldItalic.ttf",
+			"horizontalalign" : "right",
+			"id" : 182,
+			"ledsource" : false,
+			"locktransforms" : true,
+			"name" : "Clock Time",
+			"opaquebackground" : false,
+			"origin" : "904.000 1073.000 0.000",
+			"padding" : 32,
+			"parallaxDepth" : "1.000 1.000",
+			"perspective" : false,
+			"pointsize" : 16.0,
+			"scale" : "1.000 1.000 1.000",
+			"size" : "230.000 73.000",
+			"solid" : true,
+			"text" : 
+			{
+				"script" : "'use strict';\nexport let __workshopId = '2105267221';\n\nexport var scriptProperties = createScriptProperties()\n\t// Whether you want a 24h or 12h style format\n\t.addCheckbox({\n\t\tname: 'use24hFormat',\n\t\tlabel: 'ui_editor_properties_use_24h_format',\n\t\tvalue: true\n\t})\n\t// Whether you want to see the seconds or not\n\t.addCheckbox({\n\t\tname: 'showSeconds',\n\t\tlabel: 'ui_editor_properties_show_seconds',\n\t\tvalue: false\n\t})\n\t// This will be used to separate each element\n\t.addText({\n\t\tname: 'delimiter',\n\t\tlabel: 'ui_editor_properties_delimiter',\n\t\tvalue: ':'\n\t})\n\t.finish();\n\n/**\n * @param {String} value (for property 'text')\n */\nexport function update(value) {\n\tlet time = new Date();\n\tvar blinkingDelimiter = scriptProperties.delimiter;\n\n\tif (time.getSeconds()%2){\n\t\tblinkingDelimiter = \" \";\n\t}\n\n\tvar hours = time.getHours();\n\tif (!scriptProperties.use24hFormat) {\n\t\thours %= 12;\n\t\tif (hours == 0) {\n\t\t\thours = 12;\n\t\t}\n\t}\n\thours = (\"00\" + hours).slice(-2);\n\n\tlet minutes = (\"00\" + time.getMinutes()).slice(-2);\n\tvalue = hours + blinkingDelimiter + minutes;\n\n\tif (scriptProperties.showSeconds) {\n\t\tlet seconds = (\"00\" + time.getSeconds()).slice(-2);\n\t\tvalue += blinkingDelimiter + seconds;\n\t}\n\n\treturn value;\n}\n",
+				"scriptproperties" : 
+				{
+					"delimiter" : ":",
+					"showSeconds" : false,
+					"use24hFormat" : true
+				},
+				"value" : "14:47"
+			},
+			"verticalalign" : "center",
+			"visible" : true
+		},
+		{
+			"alignment" : "center",
+			"alpha" : 1.0,
+			"angles" : "0.000 0.000 0.017",
+			"color" : "1.000 1.000 1.000",
+			"colorBlendMode" : 0,
+			"config" : 
+			{
+				"passthrough" : true
+			},
+			"copybackground" : true,
+			"effects" : 
+			[
+				{
+					"file" : "effects/tint/effect.json",
+					"id" : 118,
+					"name" : "Colourise",
+					"passes" : 
+					[
+						{
+							"constantshadervalues" : 
+							{
+								"alpha" : 1,
+								"color" : 
+								{
+									"script" : null,
+									"user" : "clockcolour",
+									"value" : "0.922 0.569 0.012"
+								}
+							},
+							"id" : 120
+						}
+					],
+					"visible" : true
+				},
+				{
+					"file" : "effects/perspective/effect.json",
+					"id" : 243,
+					"name" : "",
+					"passes" : 
+					[
+						{
+							"constantshadervalues" : 
+							{
+								"bottom" : -0.0,
+								"left" : -0.02
+							},
+							"id" : 257
+						}
+					],
+					"visible" : false
+				},
+				{
+					"file" : "effects/transform/effect.json",
+					"id" : 276,
+					"name" : "Rotate",
+					"passes" : 
+					[
+						{
+							"constantshadervalues" : 
+							{
+								"angle" : -0.026179938779914945
+							},
+							"id" : 278
+						}
+					],
+					"visible" : true
+				},
+				{
+					"file" : "effects/skew/effect.json",
+					"id" : 158,
+					"name" : "",
+					"passes" : 
+					[
+						{
+							"combos" : 
+							{
+								"MODE" : 0,
+								"REPEAT" : 1
+							},
+							"constantshadervalues" : 
+							{
+								"bottom" : -0.01,
+								"left" : -0.040000000000000001,
+								"right" : 0,
+								"top" : 0
+							},
+							"id" : 159
+						}
+					],
+					"visible" : true
+				},
+				{
+					"file" : "effects/godrays/effect.json",
+					"id" : 251,
+					"name" : "Text Glow",
+					"passes" : 
+					[
+						{
+							"combos" : 
+							{
+								"NOISE" : 1
+							},
+							"constantshadervalues" : 
+							{
+								"noiseamount" : 0.40000000000000002,
+								"noisescale" : 3,
+								"noisesmoothness" : 0.20000000000000001,
+								"noisespeed" : 0,
+								"raythreshold" : 0
+							},
+							"id" : 0,
+							"textures" : [ null, "util/white", "util/clouds_256" ]
+						},
+						{
+							"combos" : 
+							{
+								"CASTER" : 0,
+								"SAMPLES" : 0
+							},
+							"constantshadervalues" : 
+							{
+								"center" : "0.5 0.5",
+								"color" : "1 1 1",
+								"rayintensity" : 
+								{
+									"script" : null,
+									"user" : "clocktextglow",
+									"value" : 0.63999998569488525
+								},
+								"raylength" : 0
+							},
+							"id" : 253
+						},
+						{
+							"combos" : 
+							{
+								"KERNEL" : 1
+							},
+							"constantshadervalues" : 
+							{
+								"blurscale" : "2 2"
+							},
+							"id" : 254
+						},
+						{
+							"combos" : 
+							{
+								"KERNEL" : 1,
+								"VERTICAL" : 1
+							},
+							"constantshadervalues" : 
+							{
+								"blurscale" : "2 2"
+							},
+							"id" : 255
+						},
+						{
+							"combos" : 
+							{
+								"BLENDMODE" : 9
+							},
+							"id" : 256,
+							"textures" : [ null, "_rt_imageLayerComposite_117_a" ]
+						}
+					],
+					"visible" : true
+				}
+			],
+			"id" : 117,
+			"image" : "models/util/composelayer.json",
+			"ledsource" : false,
+			"locktransforms" : true,
+			"name" : "Clock Screen VFX",
+			"origin" : "624.000 1094.000 0.000",
+			"parallaxDepth" : "1.000 1.000",
+			"perspective" : false,
+			"scale" : "1.000 1.000 1.000",
+			"size" : "580.000 120.000",
+			"solid" : true,
+			"visible" : true
+		},
+		{
+			"alignment" : "center",
+			"alpha" : 1.0,
+			"angles" : "0.000 0.000 0.000",
+			"color" : "1.000 1.000 1.000",
+			"colorBlendMode" : 0,
+			"config" : 
+			{
+				"passthrough" : true
+			},
+			"copybackground" : true,
+			"effects" : 
+			[
+				{
+					"file" : "effects/godrays/effect.json",
+					"id" : 275,
+					"name" : "Lamp Glow",
+					"passes" : 
+					[
+						{
+							"combos" : 
+							{
+								"NOISE" : 1
+							},
+							"constantshadervalues" : 
+							{
+								"noiseamount" : 0.40000000000000002,
+								"noisescale" : 3,
+								"noisesmoothness" : 0.20000000000000001,
+								"noisespeed" : 0,
+								"raythreshold" : 0.33000000000000002
+							},
+							"id" : 277,
+							"textures" : [ null, "util/white", "util/clouds_256" ]
+						},
+						{
+							"combos" : 
+							{
+								"CASTER" : 1,
+								"SAMPLES" : 0
+							},
+							"constantshadervalues" : 
+							{
+								"center" : "0.5 0.5",
+								"color" : "1 1 1",
+								"direction" : -2.9670597283903604,
+								"rayintensity" : 
+								{
+									"script" : null,
+									"user" : "lampglow",
+									"value" : 0.32000000000000001
+								},
+								"raylength" : 0.69999999999999996
+							},
+							"id" : 280
+						},
+						{
+							"combos" : 
+							{
+								"KERNEL" : 1
+							},
+							"constantshadervalues" : 
+							{
+								"blurscale" : "0.7 0.7"
+							},
+							"id" : 281
+						},
+						{
+							"combos" : 
+							{
+								"KERNEL" : 1,
+								"VERTICAL" : 1
+							},
+							"constantshadervalues" : 
+							{
+								"blurscale" : "0.7 0.7"
+							},
+							"id" : 282
+						},
+						{
+							"combos" : 
+							{
+								"BLENDMODE" : 9
+							},
+							"id" : 283,
+							"textures" : [ null, "_rt_imageLayerComposite_272_a" ]
+						}
+					],
+					"visible" : true
+				}
+			],
+			"id" : 272,
+			"image" : "models/util/composelayer.json",
+			"ledsource" : false,
+			"locktransforms" : true,
+			"name" : "Lamp Glow",
+			"origin" : "3422.662 1501.471 0.000",
+			"parallaxDepth" : "1.000 1.000",
+			"perspective" : false,
+			"scale" : "1.000 1.000 1.000",
+			"size" : "512.000 512.000",
+			"solid" : true,
+			"visible" : true
+		}
+	]
+}

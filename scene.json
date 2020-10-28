@@ -1,8 +1,8 @@
 {
 	"camera" : 
 	{
-		"center" : "0.000 0.000 -1.000",
-		"eye" : "0.000 0.000 0.000",
+		"center" : "-102.924 -30.856 -1.000",
+		"eye" : "-102.924 -30.856 0.000",
 		"up" : "0.000 1.000 0.000"
 	},
 	"general" : 
@@ -61,33 +61,13 @@
 			"visible" : true
 		},
 		{
-			"alignment" : "center",
-			"alpha" : 1.0,
-			"angles" : "0.000 0.000 0.000",
-			"color" : "1.000 1.000 1.000",
-			"colorBlendMode" : 0,
-			"copybackground" : true,
-			"id" : 27,
-			"image" : "models/term.json",
-			"ledsource" : false,
-			"locktransforms" : true,
-			"name" : "Guide",
-			"origin" : "1920.000 1080.000 0.000",
-			"parallaxDepth" : "1.000 1.000",
-			"perspective" : false,
-			"scale" : "1.500 1.500 0.000",
-			"size" : "2560.000 1440.000",
-			"solid" : true,
-			"visible" : false
-		},
-		{
 			"alpha" : 1.0,
 			"anchor" : "none",
 			"angles" : "0.000 0.000 0.000",
 			"backgroundcolor" : "0.000 0.000 0.000",
 			"color" : 
 			{
-				"script" : "'use strict';\n\n/**\n * @param {Vec3} value - for property 'color'\n */\nexport function update(value) {\n\t//Colour is set in terminal screen vfx, please don't edit here\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nexport function update(value) {\n\t//Colour is set in Terminal Screen VFX, please don't change here\n\treturn value;\n}\n",
 				"value" : "1.000 1.000 1.000"
 			},
 			"colorBlendMode" : 0,
@@ -143,7 +123,7 @@
 			"backgroundcolor" : "0.000 0.000 0.000",
 			"color" : 
 			{
-				"script" : "'use strict';\n\n/**\n * @param {Vec3} value - for property 'color'\n */\nexport function update(value) {\n\t//Colour is set in terminal screen vfx, please don't edit here\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nexport function update(value) {\n\t//Colour is set in Terminal Screen VFX, please don't change here\n\treturn value;\n}\n",
 				"value" : "1.000 1.000 1.000"
 			},
 			"colorBlendMode" : 0,
@@ -175,7 +155,7 @@
 			"ledsource" : false,
 			"locktransforms" : true,
 			"name" : "Output  SubHeader",
-			"opaquebackground" : false,
+			"opaquebackground" : true,
 			"origin" : "1332.000 1470.000 0.000",
 			"padding" : 32,
 			"parallaxDepth" : "1.000 1.000",
@@ -254,7 +234,7 @@
 			"solid" : true,
 			"text" : 
 			{
-				"script" : "'use strict';\n\nvar selectedThisPage = false;\nvar testOutput = \" This is not working                 \";\n\nexport var scriptProperties = createScriptProperties()\n\t.addText({\n\t\tname: 'divider',\n\t\tlabel: 'Vertical Divider',\n\t\tvalue: '¦'\n\t})\n\t.finish();\n\nexport function cursorClick(_event) {\n\tselectedThisPage = !selectedThisPage;\n\t//thisScene.getLayer(2).currentPage = 1;\n\ttestOutput = thisScene.getLayer(2).currentPage;  //.currentPage = 1;\n}\n\nexport function update(value) {\n\tif(selectedThisPage){\n\t\tvalue = scriptProperties.divider + \"     01 \" +  scriptProperties.divider + testOutput + scriptProperties.divider;\n\t}\n\t//else if(thisScene.getLayer('Output Line 1').selectedThisPage){\n\t//\toutput = scriptProperties.divider + \"     01 \" +  scriptProperties.divider + \" Calendar Test                       \" + scriptProperties.divider;\n\t//}\n\telse{\n\t\tvalue = scriptProperties.divider + \"     01 \" +  scriptProperties.divider + \" Music Player                        \" + scriptProperties.divider;\n\t}\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nvar selectedThisPage = false;\n\nexport var scriptProperties = createScriptProperties()\n\t.addText({\n\t\tname: 'divider',\n\t\tlabel: 'Vertical Divider',\n\t\tvalue: '¦'\n\t})\n\t.finish();\n\nexport function cursorClick(_event) {\n\tselectedThisPage = !selectedThisPage;\n\t//thisScene.getLayer(2).currentPage = 1;\n\t//testOutput = thisScene.getLayer(2).currentPage;  // why is this undefined? how do I do global vars?\n}\n\nexport function update(value) {\n\tif(selectedThisPage){\n\t\tvalue = scriptProperties.divider + \"     01 \" +  scriptProperties.divider + \" Coming soon (maybe)                 \" + scriptProperties.divider;\n\t}\n\t//else if(thisScene.getLayer('Output Line 1').selectedThisPage){\n\t//\toutput = scriptProperties.divider + \"     01 \" +  scriptProperties.divider + \" Calendar Test                       \" + scriptProperties.divider;\n\t//}\n\telse{\n\t\tvalue = scriptProperties.divider + \"     01 \" +  scriptProperties.divider + \" Music Player                        \" + scriptProperties.divider;\n\t}\n\treturn value;\n}\n",
 				"scriptproperties" : 
 				{
 					"divider" : 
@@ -429,7 +409,7 @@
 			"id" : 82,
 			"ledsource" : false,
 			"locktransforms" : true,
-			"name" : "Output Line Final",
+			"name" : "Output Line Footer",
 			"opaquebackground" : false,
 			"origin" : "1332.000 1242.000 0.000",
 			"padding" : 32,
@@ -821,7 +801,7 @@
 			"perspective" : false,
 			"pointsize" : 5.5,
 			"scale" : "1.000 1.000 1.000",
-			"size" : "181.000 25.000",
+			"size" : "163.000 25.000",
 			"solid" : true,
 			"text" : 
 			{
@@ -831,7 +811,7 @@
 					"addDelimiter" : "-",
 					"useDelimiter" : true
 				},
-				"value" : "2020-24-10"
+				"value" : "1985-10-2"
 			},
 			"verticalalign" : "center",
 			"visible" : true
@@ -868,7 +848,7 @@
 					"showSeconds" : false,
 					"use24hFormat" : true
 				},
-				"value" : "14:47"
+				"value" : "09:00"
 			},
 			"verticalalign" : "center",
 			"visible" : true

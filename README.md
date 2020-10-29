@@ -36,4 +36,4 @@ User properties:
     
 * Clock text colour
     
-*Clock trunc'ed/full day
+* Clock trunc'ed/full day

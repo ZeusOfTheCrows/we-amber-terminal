@@ -1,8 +1,8 @@
 {
 	"camera" : 
 	{
-		"center" : "-102.924 -30.856 -1.000",
-		"eye" : "-102.924 -30.856 0.000",
+		"center" : "0.000 0.000 0.000",
+		"eye" : "0.000 0.000 1.000",
 		"up" : "0.000 1.000 0.000"
 	},
 	"general" : 
@@ -72,27 +72,6 @@
 			},
 			"colorBlendMode" : 0,
 			"copybackground" : true,
-			"effects" : 
-			[
-				{
-					"file" : "effects/scroll/effect.json",
-					"id" : 90,
-					"name" : "Screen Remove",
-					"passes" : 
-					[
-						{
-							"constantshadervalues" : 
-							{
-								"repeat" : "1 1",
-								"speedx" : 0,
-								"speedy" : 0.44
-							},
-							"id" : 91
-						}
-					],
-					"visible" : false
-				}
-			],
 			"font" : "fonts/FSEX302-alt.ttf",
 			"horizontalalign" : "left",
 			"id" : 41,
@@ -128,27 +107,6 @@
 			},
 			"colorBlendMode" : 0,
 			"copybackground" : true,
-			"effects" : 
-			[
-				{
-					"file" : "effects/scroll/effect.json",
-					"id" : 145,
-					"name" : "Screen Remove",
-					"passes" : 
-					[
-						{
-							"constantshadervalues" : 
-							{
-								"repeat" : "1 1",
-								"speedx" : 0,
-								"speedy" : 0.44
-							},
-							"id" : 146
-						}
-					],
-					"visible" : false
-				}
-			],
 			"font" : "fonts/FSEX302-alt.ttf",
 			"horizontalalign" : "left",
 			"id" : 144,
@@ -196,27 +154,6 @@
 			},
 			"colorBlendMode" : 0,
 			"copybackground" : true,
-			"effects" : 
-			[
-				{
-					"file" : "effects/scroll/effect.json",
-					"id" : 150,
-					"name" : "Screen Remove",
-					"passes" : 
-					[
-						{
-							"constantshadervalues" : 
-							{
-								"repeat" : "1 1",
-								"speedx" : 0,
-								"speedy" : 0.44
-							},
-							"id" : 151
-						}
-					],
-					"visible" : false
-				}
-			],
 			"font" : "fonts/FSEX302-alt.ttf",
 			"horizontalalign" : "left",
 			"id" : 149,
@@ -268,27 +205,6 @@
 			},
 			"colorBlendMode" : 0,
 			"copybackground" : true,
-			"effects" : 
-			[
-				{
-					"file" : "effects/scroll/effect.json",
-					"id" : 127,
-					"name" : "Screen Remove",
-					"passes" : 
-					[
-						{
-							"constantshadervalues" : 
-							{
-								"repeat" : "1 1",
-								"speedx" : 0,
-								"speedy" : 0.44
-							},
-							"id" : 128
-						}
-					],
-					"visible" : false
-				}
-			],
 			"font" : "fonts/FSEX302-alt.ttf",
 			"horizontalalign" : "left",
 			"id" : 126,
@@ -383,27 +299,6 @@
 			},
 			"colorBlendMode" : 0,
 			"copybackground" : true,
-			"effects" : 
-			[
-				{
-					"file" : "effects/scroll/effect.json",
-					"id" : 83,
-					"name" : "Screen Remove",
-					"passes" : 
-					[
-						{
-							"constantshadervalues" : 
-							{
-								"repeat" : "1 1",
-								"speedx" : 0,
-								"speedy" : 0.44
-							},
-							"id" : 84
-						}
-					],
-					"visible" : false
-				}
-			],
 			"font" : "fonts/FSEX302-alt.ttf",
 			"horizontalalign" : "left",
 			"id" : 82,
@@ -476,40 +371,6 @@
 			"color" : "1.000 1.000 1.000",
 			"colorBlendMode" : 0,
 			"copybackground" : true,
-			"effects" : 
-			[
-				{
-					"file" : "effects/scroll/effect.json",
-					"id" : 173,
-					"name" : "Screen Scroll",
-					"passes" : 
-					[
-						{
-							"constantshadervalues" : 
-							{
-								"repeat" : "1 1",
-								"speedx" : 0,
-								"speedy" : 0.20000000000000001
-							},
-							"id" : 174
-						}
-					],
-					"visible" : false
-				},
-				{
-					"file" : "effects/opacity/effect.json",
-					"id" : 236,
-					"name" : "",
-					"passes" : 
-					[
-						{
-							"id" : 237,
-							"textures" : [ null, "masks/opacity_mask_031a717cd7715ec69f2973ec9d2b017300776b2b" ]
-						}
-					],
-					"visible" : false
-				}
-			],
 			"font" : "fonts/FSEX302-alt.ttf",
 			"horizontalalign" : "left",
 			"id" : 172,

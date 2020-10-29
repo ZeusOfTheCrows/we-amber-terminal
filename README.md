@@ -2,7 +2,7 @@
 
 **Requires WallpaperEngine on Steam**
 
-**Beta, terminal contents not fully working at this stage!**
+**Other versions in other branches**
 
 ===========================================================================
 
@@ -18,20 +18,22 @@ All WE UI user properties should reflect properly, however actual wallpaper clic
 
 User properties:
     
-Terminal text colour
+* Terminal text colour
+
+* Scrolling text on/off
     
-Prompt character(s)
+* Prompt character(s)
     
-Bloom effect (toggle)
+* Bloom effect (toggle)
     
-Pincushion intensity
+* Pincushion intensity
     
-Scanline intensity
+* Scanline intensity
     
-CRT Noise intensity
+* CRT Noise intensity
     
-Vertical separator (¦)
+* Vertical separator (¦)
     
-Clock text colour
+* Clock text colour
     
-Clock trunc'ed/full day
+*Clock trunc'ed/full day

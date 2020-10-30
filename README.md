@@ -30,7 +30,7 @@ Scanline intensity
     
 CRT Noise intensity
     
-Vertical separator (¦)
+Vertical separator ( ¦ )
     
 Clock text colour
     

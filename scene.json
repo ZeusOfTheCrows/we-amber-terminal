@@ -10,8 +10,8 @@
 		"ambientcolor" : "0.300 0.300 0.300",
 		"bloom" : 
 		{
-			"user" : "textgloweffect",
-			"value" : true
+			"user" : "globalbloom",
+			"value" : false
 		},
 		"bloomstrength" : 2.0,
 		"bloomthreshold" : 0.64999997615814209,
@@ -32,8 +32,8 @@
 		"nearz" : 0.0099999997764825821,
 		"orthogonalprojection" : 
 		{
-			"height" : 2160,
-			"width" : 3840
+			"height" : 1920,
+			"width" : 3415
 		},
 		"skylightcolor" : "0.300 0.300 0.300",
 		"zoom" : 1.0
@@ -44,21 +44,48 @@
 			"alignment" : "center",
 			"alpha" : 1.0,
 			"angles" : "0.000 0.000 0.000",
-			"color" : "1.000 1.000 1.000",
+			"color" : 
+			{
+				"user" : "terminalbgcolr",
+				"value" : "0.114 0.325 0.710"
+			},
 			"colorBlendMode" : 0,
 			"copybackground" : true,
-			"id" : 97,
-			"image" : "models/wallpaper-small.json",
+			"effects" : 
+			[
+				{
+					"file" : "effects/perspective/effect.json",
+					"id" : 129,
+					"name" : "",
+					"passes" : 
+					[
+						{
+							"combos" : 
+							{
+								"MODE" : 1
+							},
+							"constantshadervalues" : 
+							{
+								"bottom" : 0.02
+							},
+							"id" : 130
+						}
+					],
+					"visible" : false
+				}
+			],
+			"id" : 126,
+			"image" : "models/util/solidlayer.json",
 			"ledsource" : false,
 			"locktransforms" : true,
-			"name" : "Background Image",
-			"origin" : "1920.000 1080.000 0.000",
+			"name" : "Screen Background",
+			"origin" : "1580.000 1280.000 0.000",
 			"parallaxDepth" : "1.000 1.000",
 			"perspective" : false,
 			"scale" : "1.000 1.000 1.000",
-			"size" : "3840.000 2160.000",
+			"size" : "950.000 700.000",
 			"solid" : true,
-			"visible" : true
+			"visible" : false
 		},
 		{
 			"alpha" : 1.0,
@@ -67,7 +94,7 @@
 			"backgroundcolor" : "0.000 0.000 0.000",
 			"color" : 
 			{
-				"script" : "'use strict';\n\n/**\n * @param {Vec3} value - for property 'color'\n */\nexport function update(value) {\n\t//Colour is set in terminal screen vfx, please don't edit here\n\treturn value;\n}\n",
+				"user" : "textcolour",
 				"value" : "1.000 1.000 1.000"
 			},
 			"colorBlendMode" : 0,
@@ -77,9 +104,9 @@
 			"id" : 140,
 			"ledsource" : false,
 			"locktransforms" : true,
-			"name" : "Input",
-			"opaquebackground" : true,
-			"origin" : "1332.000 1090.000 0.000",
+			"name" : "Prompt",
+			"opaquebackground" : false,
+			"origin" : "1175.000 1010.000 0.000",
 			"padding" : 32,
 			"parallaxDepth" : "1.000 1.000",
 			"perspective" : false,
@@ -102,8 +129,12 @@
 				},
 				"value" : ">_"
 			},
-			"verticalalign" : "top",
-			"visible" : true
+			"verticalalign" : "bottom",
+			"visible" : 
+			{
+				"script" : "'use strict';\n\nlet show = false;\n\nexport function applyUserProperties(userProperties){\n\tif (userProperties.hasOwnProperty(\"scrollingtext\"));\n\tshow = !userProperties.scrollingtext;\n}\n\nexport function update(_value) {\n\t\n\treturn show;\n}\n",
+				"value" : true
+			}
 		},
 		{
 			"alpha" : 1.0,
@@ -112,7 +143,7 @@
 			"backgroundcolor" : "0.000 0.000 0.000",
 			"color" : 
 			{
-				"script" : "'use strict';\n\nexport function update(value) {\n\t//Colour is set in terminal screen vfx, please don't edit here\n\treturn value;\n}\n",
+				"user" : "textcolour",
 				"value" : "1.000 1.000 1.000"
 			},
 			"colorBlendMode" : 0,
@@ -123,8 +154,8 @@
 			"ledsource" : false,
 			"locktransforms" : true,
 			"name" : "Autotyped Code",
-			"opaquebackground" : true,
-			"origin" : "1332.000 1051.000 0.000",
+			"opaquebackground" : false,
+			"origin" : "1175.000 1010.000 0.000",
 			"padding" : 32,
 			"parallaxDepth" : "1.000 1.000",
 			"perspective" : false,
@@ -137,7 +168,7 @@
 				"script" : "'use strict';\n\nexport var scriptProperties = createScriptProperties()\n\t.addText({\n\t\tname: 'scrollingTextContents',\n\t\tlabel: 'ScrollingText',\n\t\tvalue: 'You shouldn’t see this unless you’re editing, please report it to me.'\n\t})\n\t.addSlider({\n\t\tname: 'outputNoOfLines',\n\t\tlabel: 'Number of lines',\n\t\tvalue: 13,\n\t\tmin: 0,\n\t\tmax: 15,\n\t\tinteger: false\n\t})\n\t.finish();\n\n//var completeOutput = scriptProperties.scrollingTextContents;\n\n//I declare this outside so we're not constantly creating and\n//deleting vars for performance reasons, I don't know if this\n//is necessary\nlet i = 0;\n\n// N.B. replaces spaces with “punctuation spaces” (U+2008)\n// as a workaround for WE eating leading spaces.\nfunction formatText(text){\n\treturn text.replace(/ /g, \" \");\n}\n\n// This does the heavy lifting of removing the older lines\n// from the terminal screen.\nfunction trimOutput(text, noOfLines){\n\tlet splitText = text.split(\"\\n\");\n\tif (splitText.length >= noOfLines){\n\t\ttext = splitText.splice((splitText.length-noOfLines), splitText.length);\n\t} else {\n\t\ttext = splitText; //.splice(splitText.length);\n\t}\n\treturn text.join(\"\\n\");\n}\n\nexport function update(output) {\n\t\n\toutput += scriptProperties.scrollingTextContents.charAt(i);  // append character to give the illusion of typing\n\tif (i <= scriptProperties.scrollingTextContents.length){  //loops around when it gets to the end of the text\n\t\ti++;\n\t} else {\n\t\toutput += \"\\n\\n\";  //add extra new lines at the end of the text\n\t\ti = 0;\n\t}\n\n\treturn formatText(trimOutput(output, scriptProperties.outputNoOfLines));\n}\n",
 				"scriptproperties" : 
 				{
-					"outputNoOfLines" : 13,
+					"outputNoOfLines" : 15,
 					"scrollingTextContents" : "struct group_info init_groups={ \n  .usage=ATOMIC_INIT(2) \n}; \n \nstruct group_info \n    *groups_alloc(int gidsetsize){ \n  struct group_info *group_info; \n  int nblocks; \n  int i; \n \n  nblocks=( \n    gidsetsize+NGROUPS_PER_BLOCK-1 \n  )/NGROUPS_PER_BLOCK; \n \n  /* Make sure we always allocate at \n  least one indirect block pointer */ \n \n  nblocks=nblocks ? : 1; \n  group_info=kmalloc(sizeof(*group_info) \n  +nblocks*sizeof(gid_t *), GFP_USER); \n  if (!group_info){ \n    return NULL; \n  } \n  group_info->ngroups=gidsetsize; \n  group_info->nblocks=nblocks; \n  atomic_set(&group_info->usage, 1); \n \n  if (gidsetsize<=NGROUPS_SMALL){ \n    group_info->blocks[0]= \n       group_info->small_block; \n  } else { \n    for (i=0; i<nblocks; i++) { \n      gid_t *b; \n      b=(void *)__get_free_page(GFP_USER); \n      if (!b) \n        goto out_undo_partial_alloc; \n      group_info->blocks[i]=b; \n    } \n  } \n  return group_info; \n \nout_undo_partial_alloc: \n  while (--i>=0) { \n    free_page((unsigned long) \n       group_info->blocks[i]); \n  } \n  kfree(group_info); \n  return NULL; \n} \n \nEXPORT_SYMBOL(groups_alloc); \n \nvoid groups_free( \n    struct group_info *group_info) \n{ \n  if (group_info->blocks[0] \n      !=group_info->small_block) { \n    int i; \n    for (i=0; i<group_info->nblocks; i++) \n      free_page((unsigned long) \n        group_info->blocks[i]); \n  } \n  kfree(group_info); \n} \n \nEXPORT_SYMBOL(groups_free); \n \n/* export the group_info \nto a user-space array */ \n \nstatic int groups_to_user( \n    gid_t __user *grouplist, \n    const struct group_info *group_info \n){ \n  int i; \n  unsigned int count=group_info->ngroups; \n \n  for (i=0; i<group_info->nblocks; i++) { \n    unsigned int cp_count=min( \n        NGROUPS_PER_BLOCK, count \n    ); \n    unsigned int len=cp_count*sizeof( \n        *grouplist \n    ); \n \n    if (copy_to_user( \n        grouplist, group_info->blocks[i], len \n    )){ \n      return -EFAULT; \n \n    grouplist+=NGROUPS_PER_BLOCK; \n    count-=cp_count; \n    } \n} \nreturn 0;"
 				},
 				"value" : ""
@@ -163,28 +194,29 @@
 			"effects" : 
 			[
 				{
-					"file" : "effects/fisheye/effect.json",
-					"id" : 104,
-					"name" : "Pincushion FX",
+					"file" : "effects/tint/effect.json",
+					"id" : 93,
+					"name" : "Colourise",
 					"passes" : 
 					[
 						{
+							"combos" : 
+							{
+								"BLENDMODE" : 9
+							},
 							"constantshadervalues" : 
 							{
-								"distortion" : 
+								"color" : 
 								{
-									"user" : "pincushioneffect",
-									"value" : 0.78000000000000003
+									"script" : null,
+									"user" : "terminalbgcolr",
+									"value" : "1.000 1.000 1.000"
 								}
 							},
-							"id" : 105
+							"id" : 94
 						}
 					],
-					"visible" : 
-					{
-						"user" : "crteffects",
-						"value" : true
-					}
+					"visible" : true
 				},
 				{
 					"file" : "effects/godrays/effect.json",
@@ -256,7 +288,7 @@
 								"BLENDMODE" : 9
 							},
 							"id" : 195,
-							"textures" : [ null, "_rt_imageLayerComposite_102_a" ]
+							"textures" : [ null, "_rt_imageLayerComposite_102_b" ]
 						}
 					],
 					"visible" : 
@@ -313,337 +345,43 @@
 							"textures" : [ null, "masks/opacity_mask_29c39f5351e23ed72b34d703d5044fc43f12c330" ]
 						}
 					],
-					"visible" : true
+					"visible" : false
 				},
 				{
-					"file" : "effects/tint/effect.json",
-					"id" : 93,
-					"name" : "Colourise",
+					"file" : "effects/fisheye/effect.json",
+					"id" : 104,
+					"name" : "Pincushion FX",
 					"passes" : 
 					[
 						{
-							"combos" : 
-							{
-								"BLENDMODE" : 30
-							},
 							"constantshadervalues" : 
 							{
-								"color" : 
+								"distortion" : 
 								{
-									"user" : "textcolour",
-									"value" : "1.000 0.000 0.000"
+									"user" : "pincushioneffect",
+									"value" : 0.78000000000000003
 								}
 							},
-							"id" : 94
+							"id" : 105
 						}
 					],
-					"visible" : true
+					"visible" : 
+					{
+						"user" : "crteffects",
+						"value" : true
+					}
 				}
 			],
 			"id" : 102,
 			"image" : "models/util/composelayer.json",
 			"ledsource" : true,
-			"locktransforms" : true,
+			"locktransforms" : false,
 			"name" : "Terminal Screen VFX",
-			"origin" : "1751.078 1288.610 0.000",
+			"origin" : "1585.000 1400.000 0.000",
 			"parallaxDepth" : "1.000 1.000",
 			"perspective" : false,
 			"scale" : "1.000 1.000 1.000",
-			"size" : "1280.000 960.000",
-			"solid" : true,
-			"visible" : true
-		},
-		{
-			"alpha" : 1.0,
-			"anchor" : "none",
-			"angles" : "0.000 0.000 0.000",
-			"backgroundcolor" : "0.000 0.000 0.000",
-			"color" : "1.000 1.000 1.000",
-			"colorBlendMode" : 0,
-			"copybackground" : true,
-			"font" : "fonts/DSEG14Classic-BoldItalic.ttf",
-			"horizontalalign" : "left",
-			"id" : 154,
-			"ledsource" : false,
-			"locktransforms" : true,
-			"name" : "Clock Day",
-			"opaquebackground" : false,
-			"origin" : "348.000 1135.000 0.000",
-			"padding" : 32,
-			"parallaxDepth" : "1.000 1.000",
-			"perspective" : false,
-			"pointsize" : 5.5,
-			"scale" : "1.000 1.000 1.000",
-			"size" : "145.000 25.000",
-			"solid" : true,
-			"text" : 
-			{
-				"script" : "/*------------------------------------------------------------------\\\n|          Not my script, all credit goes to fug4life:              |\n|(https://steamcommunity.com/sharedfiles/filedetails/?id=2192230436)|\n\\------------------------------------------------------------------*/\n\n// Usage:\n// Bind to a Text Layer, Text Property (to the right of where you can enter text, click on the gear/cog icon and select bind script). Compile the script to ensure Script Properties show up in editor. Run Scripts to view live in editor or Apply Wallpaper to view live on Desktop.\n\n'use strict';\n\nexport let __workshopId = '2108644365';\n\n\nexport var scriptProperties = createScriptProperties()\n  .addCheckbox({\n    name: 'useFullDay',\n    label: 'Use Full Day',\n    value: true\n  })\n  .finish();\n\nlet day = [];\nlet date = new Date();\n\nexport function update(value) {\n  if (scriptProperties.useFullDay) {\n    //array of weekdays must start with sunday, not monday (JS limitation)\n    day = [\n      'Sunday',\n      'Monday',\n      'Tuesday',\n      'Wednesday',\n      'Thursday',\n      'Friday',\n      'Saturday'\n    ]\n  }\n  else {\n    day = [\n      'Sun',\n      'Mon',\n      'Tue',\n      'Wed',\n      'Thu',\n      'Fri',\n      'Sat'\n    ]\n  }\n\n  return day[date.getDay()];\n}\n\n",
-				"scriptproperties" : 
-				{
-					"useFullDay" : 
-					{
-						"user" : "clockusesfullday",
-						"value" : true
-					}
-				},
-				"value" : "Saturday"
-			},
-			"verticalalign" : "center",
-			"visible" : true
-		},
-		{
-			"alpha" : 1.0,
-			"anchor" : "none",
-			"angles" : "0.000 0.000 0.000",
-			"backgroundcolor" : "0.000 0.000 0.000",
-			"color" : "1.000 1.000 1.000",
-			"colorBlendMode" : 0,
-			"copybackground" : true,
-			"font" : "fonts/DSEG14Classic-BoldItalic.ttf",
-			"horizontalalign" : "center",
-			"id" : 279,
-			"ledsource" : false,
-			"locktransforms" : true,
-			"name" : "Clock Date",
-			"opaquebackground" : false,
-			"origin" : "808.000 1138.000 0.000",
-			"padding" : 32,
-			"parallaxDepth" : "1.000 1.000",
-			"perspective" : false,
-			"pointsize" : 5.5,
-			"scale" : "1.000 1.000 1.000",
-			"size" : "181.000 25.000",
-			"solid" : true,
-			"text" : 
-			{
-				"script" : "/*------------------------------------------------------------------\\\n|          Not my script, all credit goes to fug4life:              |\n|(https://steamcommunity.com/sharedfiles/filedetails/?id=2192230436)|\n\\------------------------------------------------------------------*/\n\n// Usage: Some exported vars may not work, I've twiddled with the code a bit for my own purposes\n// Bind to a Text Layer, Text Property (to the right of where you can enter text, click on the gear/cog icon and select bind script). Compile the script to ensure Script Properties show up in editor. Run Scripts to view live in editor or Apply Wallpaper to view live on Desktop.\n\n'use strict';\n\nexport let __workshopId = '2108644365';\n\nexport var scriptProperties = createScriptProperties()\n  .addCheckbox({\n    name: 'useDelimiter',\n    label: 'Use Delimiter',\n    value: true\n  })\n  .addText({\n    name: 'addDelimiter',\n    label: 'Delimiter',\n    value: '-'\n  })\n  .finish();\n\nvar delimiterValue;\n\n\nfunction leftPad(numToPad) {\n  return (\"00\" + numToPad).slice(-2);\n}\n\n\nexport function update(value) {\n  \n  if (scriptProperties.useDelimiter == true) {\n    delimiterValue = scriptProperties.addDelimiter\n  }\n  else {\n    delimiterValue = \" \";\n  }\n  \n  let date = new Date(); {\n    let returnVal = \"\";\n    returnVal += date.getFullYear() + delimiterValue + leftPad(date.getDate()) + delimiterValue + leftPad(date.getMonth()+1);\n    \n    return returnVal;\n  }\n}\n",
-				"scriptproperties" : 
-				{
-					"addDelimiter" : "-",
-					"useDelimiter" : true
-				},
-				"value" : "1985-10-26"
-			},
-			"verticalalign" : "center",
-			"visible" : true
-		},
-		{
-			"alpha" : 1.0,
-			"anchor" : "none",
-			"angles" : "0.000 0.000 0.000",
-			"backgroundcolor" : "0.000 0.000 0.000",
-			"color" : "1.000 1.000 1.000",
-			"colorBlendMode" : 0,
-			"copybackground" : true,
-			"font" : "fonts/DSEG7Classic-BoldItalic.ttf",
-			"horizontalalign" : "right",
-			"id" : 182,
-			"ledsource" : false,
-			"locktransforms" : true,
-			"name" : "Clock Time",
-			"opaquebackground" : false,
-			"origin" : "904.000 1073.000 0.000",
-			"padding" : 32,
-			"parallaxDepth" : "1.000 1.000",
-			"perspective" : false,
-			"pointsize" : 16.0,
-			"scale" : "1.000 1.000 1.000",
-			"size" : "230.000 73.000",
-			"solid" : true,
-			"text" : 
-			{
-				"script" : "'use strict';\nexport let __workshopId = '2105267221';\n\nexport var scriptProperties = createScriptProperties()\n\t// Whether you want a 24h or 12h style format\n\t.addCheckbox({\n\t\tname: 'use24hFormat',\n\t\tlabel: 'ui_editor_properties_use_24h_format',\n\t\tvalue: true\n\t})\n\t// Whether you want to see the seconds or not\n\t.addCheckbox({\n\t\tname: 'showSeconds',\n\t\tlabel: 'ui_editor_properties_show_seconds',\n\t\tvalue: false\n\t})\n\t// This will be used to separate each element\n\t.addText({\n\t\tname: 'delimiter',\n\t\tlabel: 'ui_editor_properties_delimiter',\n\t\tvalue: ':'\n\t})\n\t.finish();\n\n/**\n * @param {String} value (for property 'text')\n */\nexport function update(value) {\n\tlet time = new Date();\n\tvar blinkingDelimiter = scriptProperties.delimiter;\n\n\tif (time.getSeconds()%2){\n\t\tblinkingDelimiter = \" \";\n\t}\n\n\tvar hours = time.getHours();\n\tif (!scriptProperties.use24hFormat) {\n\t\thours %= 12;\n\t\tif (hours == 0) {\n\t\t\thours = 12;\n\t\t}\n\t}\n\thours = (\"00\" + hours).slice(-2);\n\n\tlet minutes = (\"00\" + time.getMinutes()).slice(-2);\n\tvalue = hours + blinkingDelimiter + minutes;\n\n\tif (scriptProperties.showSeconds) {\n\t\tlet seconds = (\"00\" + time.getSeconds()).slice(-2);\n\t\tvalue += blinkingDelimiter + seconds;\n\t}\n\n\treturn value;\n}\n",
-				"scriptproperties" : 
-				{
-					"delimiter" : ":",
-					"showSeconds" : false,
-					"use24hFormat" : true
-				},
-				"value" : "09:00"
-			},
-			"verticalalign" : "center",
-			"visible" : true
-		},
-		{
-			"alignment" : "center",
-			"alpha" : 1.0,
-			"angles" : "0.000 0.000 0.017",
-			"color" : "1.000 1.000 1.000",
-			"colorBlendMode" : 0,
-			"config" : 
-			{
-				"passthrough" : true
-			},
-			"copybackground" : true,
-			"effects" : 
-			[
-				{
-					"file" : "effects/tint/effect.json",
-					"id" : 118,
-					"name" : "Colourise",
-					"passes" : 
-					[
-						{
-							"constantshadervalues" : 
-							{
-								"alpha" : 1,
-								"color" : 
-								{
-									"script" : null,
-									"user" : "clockcolour",
-									"value" : "0.922 0.569 0.012"
-								}
-							},
-							"id" : 120
-						}
-					],
-					"visible" : true
-				},
-				{
-					"file" : "effects/perspective/effect.json",
-					"id" : 243,
-					"name" : "",
-					"passes" : 
-					[
-						{
-							"constantshadervalues" : 
-							{
-								"bottom" : -0.0,
-								"left" : -0.02
-							},
-							"id" : 257
-						}
-					],
-					"visible" : false
-				},
-				{
-					"file" : "effects/transform/effect.json",
-					"id" : 276,
-					"name" : "Rotate",
-					"passes" : 
-					[
-						{
-							"constantshadervalues" : 
-							{
-								"angle" : -0.026179938779914945
-							},
-							"id" : 278
-						}
-					],
-					"visible" : true
-				},
-				{
-					"file" : "effects/skew/effect.json",
-					"id" : 158,
-					"name" : "",
-					"passes" : 
-					[
-						{
-							"combos" : 
-							{
-								"MODE" : 0,
-								"REPEAT" : 1
-							},
-							"constantshadervalues" : 
-							{
-								"bottom" : -0.01,
-								"left" : -0.040000000000000001,
-								"right" : 0,
-								"top" : 0
-							},
-							"id" : 159
-						}
-					],
-					"visible" : true
-				},
-				{
-					"file" : "effects/godrays/effect.json",
-					"id" : 251,
-					"name" : "Text Glow",
-					"passes" : 
-					[
-						{
-							"combos" : 
-							{
-								"NOISE" : 1
-							},
-							"constantshadervalues" : 
-							{
-								"noiseamount" : 0.40000000000000002,
-								"noisescale" : 3,
-								"noisesmoothness" : 0.20000000000000001,
-								"noisespeed" : 0,
-								"raythreshold" : 0
-							},
-							"id" : 0,
-							"textures" : [ null, "util/white", "util/clouds_256" ]
-						},
-						{
-							"combos" : 
-							{
-								"CASTER" : 0,
-								"SAMPLES" : 0
-							},
-							"constantshadervalues" : 
-							{
-								"center" : "0.5 0.5",
-								"color" : "1 1 1",
-								"rayintensity" : 
-								{
-									"script" : null,
-									"user" : "clocktextglow",
-									"value" : 0.63999998569488525
-								},
-								"raylength" : 0
-							},
-							"id" : 253
-						},
-						{
-							"combos" : 
-							{
-								"KERNEL" : 1
-							},
-							"constantshadervalues" : 
-							{
-								"blurscale" : "2 2"
-							},
-							"id" : 254
-						},
-						{
-							"combos" : 
-							{
-								"KERNEL" : 1,
-								"VERTICAL" : 1
-							},
-							"constantshadervalues" : 
-							{
-								"blurscale" : "2 2"
-							},
-							"id" : 255
-						},
-						{
-							"combos" : 
-							{
-								"BLENDMODE" : 9
-							},
-							"id" : 256,
-							"textures" : [ null, "_rt_imageLayerComposite_117_a" ]
-						}
-					],
-					"visible" : true
-				}
-			],
-			"id" : 117,
-			"image" : "models/util/composelayer.json",
-			"ledsource" : false,
-			"locktransforms" : true,
-			"name" : "Clock Screen VFX",
-			"origin" : "624.000 1094.000 0.000",
-			"parallaxDepth" : "1.000 1.000",
-			"perspective" : false,
-			"scale" : "1.000 1.000 1.000",
-			"size" : "580.000 120.000",
+			"size" : "1280.000 1280.000",
 			"solid" : true,
 			"visible" : true
 		},
@@ -653,101 +391,17 @@
 			"angles" : "0.000 0.000 0.000",
 			"color" : "1.000 1.000 1.000",
 			"colorBlendMode" : 0,
-			"config" : 
-			{
-				"passthrough" : true
-			},
 			"copybackground" : true,
-			"effects" : 
-			[
-				{
-					"file" : "effects/godrays/effect.json",
-					"id" : 275,
-					"name" : "Lamp Glow",
-					"passes" : 
-					[
-						{
-							"combos" : 
-							{
-								"NOISE" : 1
-							},
-							"constantshadervalues" : 
-							{
-								"noiseamount" : 0.40000000000000002,
-								"noisescale" : 3,
-								"noisesmoothness" : 0.20000000000000001,
-								"noisespeed" : 0,
-								"raythreshold" : 0.33000000000000002
-							},
-							"id" : 277,
-							"textures" : [ null, "util/white", "util/clouds_256" ]
-						},
-						{
-							"combos" : 
-							{
-								"CASTER" : 1,
-								"SAMPLES" : 0
-							},
-							"constantshadervalues" : 
-							{
-								"center" : "0.5 0.5",
-								"color" : "1 1 1",
-								"direction" : -2.9670597283903604,
-								"rayintensity" : 
-								{
-									"script" : null,
-									"user" : "lampglow",
-									"value" : 0.32000000000000001
-								},
-								"raylength" : 0.69999999999999996
-							},
-							"id" : 280
-						},
-						{
-							"combos" : 
-							{
-								"KERNEL" : 1
-							},
-							"constantshadervalues" : 
-							{
-								"blurscale" : "0.7 0.7"
-							},
-							"id" : 281
-						},
-						{
-							"combos" : 
-							{
-								"KERNEL" : 1,
-								"VERTICAL" : 1
-							},
-							"constantshadervalues" : 
-							{
-								"blurscale" : "0.7 0.7"
-							},
-							"id" : 282
-						},
-						{
-							"combos" : 
-							{
-								"BLENDMODE" : 9
-							},
-							"id" : 283,
-							"textures" : [ null, "_rt_imageLayerComposite_272_a" ]
-						}
-					],
-					"visible" : true
-				}
-			],
-			"id" : 272,
-			"image" : "models/util/composelayer.json",
+			"id" : 122,
+			"image" : "models/hollow.json",
 			"ledsource" : false,
 			"locktransforms" : true,
-			"name" : "Lamp Glow",
-			"origin" : "3422.662 1501.471 0.000",
+			"name" : "Image",
+			"origin" : "1707.500 960.000 0.000",
 			"parallaxDepth" : "1.000 1.000",
 			"perspective" : false,
 			"scale" : "1.000 1.000 1.000",
-			"size" : "512.000 512.000",
+			"size" : "3415.000 1920.000",
 			"solid" : true,
 			"visible" : true
 		}

@@ -1,37 +1,11 @@
 {
 	"contentrating" : "Everyone",
-	"description" : "[code]\r\n[b]Interactive version [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2268178377]over here[/url] (not finished yet)[/b]\r\n\r\n===========================================================================\r\n\r\nI decided to rewrite my rainmeter preset into wallpaper engine for performance reasons, and I thought I'd put it up on steam workshop.\r\n\r\nRetro styled DEC VT100 terminal desktop, with clock radio. I know the VT100 wasn't amber, but I think it looks better - change it to green if you like..\r\n\r\nBackground image from [url=https://www.deviantart.com/maxcorpindustries/art/Vintage-Terminal-1-0-for-rainmeter-831562992]MaxCorpIndustries[/url], crt effects by [url=https://steamcommunity.com/sharedfiles/filedetails?id=2116673772]Zauwara/fug4life[/url].\r\n\r\n===========================================================================\r\n\r\nAll WE UI user properties should reflect properly, however actual wallpaper clickables aren't currently working. I hope to get them working at some point; please feel free to message me with how the WE Shared class works, or [url=https://github.com/ZeusOfTheCrows/we-amber-terminal]source is available here[/url] if you think you can do better.\r\n\r\nUser properties:\r\n[list]\r\n    [*]Terminal text colour\r\n    [*]Scrolling text on/off\r\n    [*]Prompt character(s)\r\n    [*]Bloom effect (toggle)\r\n    [*]Pincushion intensity\r\n    [*]Scanline intensity\r\n    [*]CRT Noise intensity\r\n    [*]Vertical separator (¦)\r\n    [*]Clock text colour\r\n    [*]Clock trunc'ed/full day\r\n[/list]\r\n[/code]",
+	"description" : "[code]\nRetro styled Commodore Amiga desktop.\n\nBackground image from , crt effects by Zauwara/fug4life.\n[/code]",
 	"file" : "scene.json",
 	"general" : 
 	{
 		"properties" : 
 		{
-			"clockcolour" : 
-			{
-				"order" : 109,
-				"text" : "Clock Colour",
-				"type" : "color",
-				"value" : "1 0 0"
-			},
-			"clocktextglow" : 
-			{
-				"fraction" : true,
-				"max" : 1,
-				"min" : 0,
-				"order" : 111,
-				"precision" : 2,
-				"step" : 0.10000000000000001,
-				"text" : "Clock Text Glow (May clash with bloom)",
-				"type" : "slider",
-				"value" : 0.10000000000000001
-			},
-			"clockusesfullday" : 
-			{
-				"order" : 110,
-				"text" : "Clock Uses Long Day",
-				"type" : "bool",
-				"value" : true
-			},
 			"crteffects" : 
 			{
 				"order" : 104,
@@ -50,19 +24,14 @@
 				"step" : 0.10000000000000001,
 				"text" : "CRT Noise",
 				"type" : "slider",
-				"value" : 0.20000000000000001
+				"value" : 0.12
 			},
-			"lampglow" : 
+			"globalbloom" : 
 			{
-				"fraction" : true,
-				"max" : 0.5,
-				"min" : 0,
-				"order" : 112,
-				"precision" : 2,
-				"step" : 0.10000000000000001,
-				"text" : "Lamp Glow (May clash with bloom)",
-				"type" : "slider",
-				"value" : 0.32000000000000001
+				"order" : 109,
+				"text" : "Global Bloom",
+				"type" : "bool",
+				"value" : false
 			},
 			"pincushioneffect" : 
 			{
@@ -80,7 +49,7 @@
 			"prompt" : 
 			{
 				"condition" : "scrollingtext.value == false",
-				"order" : 102,
+				"order" : 103,
 				"text" : "Prompt",
 				"type" : "textinput",
 				"value" : ">"
@@ -103,14 +72,21 @@
 				"order" : 100,
 				"text" : "ui_browse_properties_scheme_color",
 				"type" : "color",
-				"value" : "0.9215686274509803 0.5686274509803921 0.011764705882352941"
+				"value" : "0.11372549019607843 0.3254901960784314 0.7098039215686275"
 			},
 			"scrollingtext" : 
 			{
-				"order" : 101,
+				"order" : 102,
 				"text" : "Show Scrolling Text",
 				"type" : "bool",
 				"value" : true
+			},
+			"terminalbgcolr" : 
+			{
+				"order" : 101,
+				"text" : "Terminal Background Colour",
+				"type" : "color",
+				"value" : "0.11372549019607843 0.3254901960784314 0.7098039215686275"
 			},
 			"terminaltextglow" : 
 			{
@@ -130,23 +106,16 @@
 				"order" : 100,
 				"text" : "Terminal Colour",
 				"type" : "color",
-				"value" : "0.9215686274509803 0.5686274509803921 0.011764705882352941"
-			},
-			"textgloweffect" : 
-			{
-				"order" : 103,
-				"text" : "Universal Bloom",
-				"type" : "bool",
-				"value" : true
+				"value" : "1 1 1"
 			}
 		}
 	},
 	"preview" : "preview.jpg",
 	"tags" : [ "Retro" ],
-	"title" : "Amber Terminal",
+	"title" : "Commodore Amiga 500",
 	"type" : "scene",
-	"version" : 3,
+	"version" : 4,
 	"visibility" : "public",
-	"workshopid" : "2271074053",
-	"workshopurl" : "steam://url/CommunityFilePage/2271074053"
+	"workshopid" : "2272437056",
+	"workshopurl" : "steam://url/CommunityFilePage/2272437056"
 }

@@ -113,8 +113,8 @@
 	"preview" : "preview.jpg",
 	"tags" : [ "Retro" ],
 	"title" : "Commodore Amiga 500",
-	"type" : "scene",
-	"version" : 5,
+	"type" : "Scene",
+	"version" : 6,
 	"visibility" : "public",
 	"workshopid" : "2272437056",
 	"workshopurl" : "steam://url/CommunityFilePage/2272437056"

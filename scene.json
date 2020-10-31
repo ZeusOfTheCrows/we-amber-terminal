@@ -1,8 +1,8 @@
 {
 	"camera" : 
 	{
-		"center" : "-106.863 126.613 -1.000",
-		"eye" : "-106.863 126.613 0.000",
+		"center" : "-109.945 340.834 -1.000",
+		"eye" : "-109.945 340.834 0.000",
 		"up" : "0.000 1.000 0.000"
 	},
 	"general" : 
@@ -106,7 +106,7 @@
 			"locktransforms" : true,
 			"name" : "Prompt",
 			"opaquebackground" : false,
-			"origin" : "1175.000 1010.000 0.000",
+			"origin" : "1175.000 1050.000 0.000",
 			"padding" : 32,
 			"parallaxDepth" : "1.000 1.000",
 			"perspective" : false,
@@ -155,7 +155,7 @@
 			"locktransforms" : true,
 			"name" : "Autotyped Code",
 			"opaquebackground" : false,
-			"origin" : "1175.000 1010.000 0.000",
+			"origin" : "1175.000 1050.000 0.000",
 			"padding" : 32,
 			"parallaxDepth" : "1.000 1.000",
 			"perspective" : false,
@@ -317,7 +317,7 @@
 									"user" : "scanlineintensity",
 									"value" : 0.12
 								},
-								"Scan Line Size" : 2.5600000000000001,
+								"Scan Line Size" : 1,
 								"Scan Line Speed" : 0,
 								"Vignette Intensity" : 0.23999999999999999
 							},
@@ -377,11 +377,11 @@
 			"ledsource" : true,
 			"locktransforms" : true,
 			"name" : "Terminal Screen VFX",
-			"origin" : "1585.000 1400.000 0.000",
+			"origin" : "1585.000 1888.000 0.000",
 			"parallaxDepth" : "1.000 1.000",
 			"perspective" : false,
 			"scale" : "1.000 1.000 1.000",
-			"size" : "1280.000 1280.000",
+			"size" : "1280.000 2560.000",
 			"solid" : true,
 			"visible" : true
 		},

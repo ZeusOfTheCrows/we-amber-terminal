@@ -1,6 +1,6 @@
 {
 	"contentrating" : "Everyone",
-	"description" : "[code]\nRetro styled Commodore Amiga desktop.\n\nBackground image from , crt effects by Zauwara/fug4life.\n[/code]",
+	"description" : "[code]\r\nRetro styled Commodore Amiga desktop.\r\n\r\nBackground image by [url=https://en.wikipedia.org/wiki/Amiga_500#/media/File:Amiga500_system.jpg]Bill Bertram[/url], crt effects by Zauwara/fug4life.\r\n[/code]",
 	"file" : "scene.json",
 	"general" : 
 	{
@@ -44,7 +44,7 @@
 				"step" : 0.10000000000000001,
 				"text" : "Pincushion Effect",
 				"type" : "slider",
-				"value" : 0.23999999999999999
+				"value" : 0.25
 			},
 			"prompt" : 
 			{
@@ -114,7 +114,7 @@
 	"tags" : [ "Retro" ],
 	"title" : "Commodore Amiga 500",
 	"type" : "scene",
-	"version" : 4,
+	"version" : 5,
 	"visibility" : "public",
 	"workshopid" : "2272437056",
 	"workshopurl" : "steam://url/CommunityFilePage/2272437056"

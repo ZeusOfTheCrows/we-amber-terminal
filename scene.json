@@ -1,8 +1,8 @@
 {
 	"camera" : 
 	{
-		"center" : "0.000 0.000 -1.000",
-		"eye" : "0.000 0.000 0.000",
+		"center" : "-106.863 126.613 -1.000",
+		"eye" : "-106.863 126.613 0.000",
 		"up" : "0.000 1.000 0.000"
 	},
 	"general" : 
@@ -132,7 +132,7 @@
 			"verticalalign" : "bottom",
 			"visible" : 
 			{
-				"script" : "'use strict';\n\nlet show = false;\n\nexport function applyUserProperties(userProperties){\n\tif (userProperties.hasOwnProperty(\"scrollingtext\"));\n\tshow = !userProperties.scrollingtext;\n}\n\nexport function update(_value) {\n\t\n\treturn show;\n}\n",
+				"script" : "'use strict';\n\nlet show = false;\n\nexport function applyUserProperties(userProperties){\n\tif (userProperties.hasOwnProperty(\"scrollingtext\")){\n\t\tshow = !userProperties.scrollingtext;\n\t}\n}\n\nexport function update(_value) {\n\t\n\treturn show;\n}\n",
 				"value" : true
 			}
 		},
@@ -375,7 +375,7 @@
 			"id" : 102,
 			"image" : "models/util/composelayer.json",
 			"ledsource" : true,
-			"locktransforms" : false,
+			"locktransforms" : true,
 			"name" : "Terminal Screen VFX",
 			"origin" : "1585.000 1400.000 0.000",
 			"parallaxDepth" : "1.000 1.000",

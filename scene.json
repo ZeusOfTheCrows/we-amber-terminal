@@ -103,7 +103,11 @@
 				"value" : ">_"
 			},
 			"verticalalign" : "top",
-			"visible" : true
+			"visible" : 
+			{
+				"script" : "'use strict';\n\nlet show = false;\n\nexport function applyUserProperties(userProperties){\n\tif (userProperties.hasOwnProperty(\"scrollingtext\")){\n\t\tshow = !userProperties.scrollingtext;\n\t}\n}\n\nexport function update(_value) {\n\t\n\treturn show;\n}\n",
+				"value" : true
+			}
 		},
 		{
 			"alpha" : 1.0,

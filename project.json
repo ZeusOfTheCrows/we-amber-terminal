@@ -1,6 +1,6 @@
 {
 	"contentrating" : "Everyone",
-	"description" : "[code]\r\n[b]Interactive version [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2268178377]over here[/url] (not finished yet)[/b]\r\n\r\n===========================================================================\r\n\r\nI decided to rewrite my rainmeter preset into wallpaper engine for performance reasons, and I thought I'd put it up on steam workshop.\r\n\r\nRetro styled DEC VT100 terminal desktop, with clock radio. I know the VT100 wasn't amber, but I think it looks better - change it to green if you like..\r\n\r\nBackground image from [url=https://www.deviantart.com/maxcorpindustries/art/Vintage-Terminal-1-0-for-rainmeter-831562992]MaxCorpIndustries[/url], crt effects by [url=https://steamcommunity.com/sharedfiles/filedetails?id=2116673772]Zauwara/fug4life[/url].\r\n\r\n===========================================================================\r\n\r\nAll WE UI user properties should reflect properly, [url=https://github.com/ZeusOfTheCrows/we-amber-terminal]source is available here[/url].\r\n\r\nUser properties:\r\n[list]\r\n    [*]Terminal text colour\r\n    [*]Scrolling text on/off\r\n    [*]Prompt character(s)\r\n    [*]Bloom effect (toggle)\r\n    [*]Pincushion intensity\r\n    [*]Scanline intensity\r\n    [*]CRT Noise intensity\r\n    [*]Vertical separator (¦)\r\n    [*]Clock text colour\r\n    [*]Clock trunc'ed/full day\r\n[/list]\r\n[/code]",
+	"description" : "[code]\n[b]Interactive version [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2268178377]over here[/url] (not finished yet)[/b]\n\n===========================================================================\n\nI decided to rewrite my rainmeter preset into wallpaper engine for performance reasons, and I thought I'd put it up on steam workshop.\n\nRetro styled DEC VT100 terminal desktop, with clock radio. I know the VT100 wasn't amber, but I think it looks better - change it to green if you like..\n\nBackground image from [url=https://www.deviantart.com/maxcorpindustries/art/Vintage-Terminal-1-0-for-rainmeter-831562992]MaxCorpIndustries[/url], crt effects by [url=https://steamcommunity.com/sharedfiles/filedetails?id=2116673772]Zauwara/fug4life[/url].\n\n===========================================================================\n\nAll WE UI user properties should reflect properly, [url=https://github.com/ZeusOfTheCrows/we-amber-terminal]source is available here[/url].\n\nUser properties:\n[list]\n    [*]Terminal text colour\n    [*]Scrolling text on/off\n    [*]Prompt character(s)\n    [*]Bloom effect (toggle)\n    [*]Pincushion intensity\n    [*]Scanline intensity\n    [*]CRT Noise intensity\n    [*]Vertical separator ( ¦ )\n    [*]Clock text colour\n    [*]Clock trunc'ed/full day\n[/list]\n[/code]",
 	"file" : "scene.json",
 	"general" : 
 	{
@@ -145,7 +145,7 @@
 	"tags" : [ "Retro" ],
 	"title" : "Amber Dec Terminal",
 	"type" : "scene",
-	"version" : 3,
+	"version" : 4,
 	"visibility" : "public",
 	"workshopid" : "2271074053",
 	"workshopurl" : "steam://url/CommunityFilePage/2271074053"

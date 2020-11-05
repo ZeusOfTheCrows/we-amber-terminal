@@ -19,21 +19,12 @@ All WE UI user properties should reflect properly, however actual wallpaper clic
 User properties:
     
 * Terminal text colour
-
 * Scrolling text on/off
-    
 * Prompt character(s)
-    
 * Bloom effect (toggle)
-    
 * Pincushion intensity
-    
 * Scanline intensity
-    
 * CRT Noise intensity
-    
-*Vertical separator ( ¦ )
-    
+* Vertical separator ( ¦ )
 * Clock text colour
-    
 * Clock trunc'ed/full day

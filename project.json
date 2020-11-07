@@ -8,7 +8,7 @@
 		{
 			"clockcolour" : 
 			{
-				"order" : 109,
+				"order" : 111,
 				"text" : "Clock Colour",
 				"type" : "color",
 				"value" : "1 0 0"
@@ -18,7 +18,7 @@
 				"fraction" : true,
 				"max" : 1,
 				"min" : 0,
-				"order" : 111,
+				"order" : 113,
 				"precision" : 2,
 				"step" : 0.10000000000000001,
 				"text" : "Clock Text Glow (May clash with bloom)",
@@ -27,14 +27,14 @@
 			},
 			"clockusesfullday" : 
 			{
-				"order" : 110,
+				"order" : 112,
 				"text" : "Clock Uses Long Day",
 				"type" : "bool",
 				"value" : true
 			},
 			"crteffects" : 
 			{
-				"order" : 104,
+				"order" : 106,
 				"text" : "CRT Effects",
 				"type" : "bool",
 				"value" : true
@@ -45,7 +45,7 @@
 				"fraction" : true,
 				"max" : 1,
 				"min" : 0,
-				"order" : 107,
+				"order" : 109,
 				"precision" : 2,
 				"step" : 0.10000000000000001,
 				"text" : "CRT Noise",
@@ -57,7 +57,7 @@
 				"fraction" : true,
 				"max" : 0.5,
 				"min" : 0,
-				"order" : 112,
+				"order" : 114,
 				"precision" : 2,
 				"step" : 0.10000000000000001,
 				"text" : "Lamp Glow (May clash with bloom)",
@@ -70,7 +70,7 @@
 				"fraction" : true,
 				"max" : 1,
 				"min" : 0,
-				"order" : 105,
+				"order" : 107,
 				"precision" : 2,
 				"step" : 0.10000000000000001,
 				"text" : "Pincushion Effect",
@@ -80,7 +80,7 @@
 			"prompt" : 
 			{
 				"condition" : "scrollingtext.value == false",
-				"order" : 102,
+				"order" : 104,
 				"text" : "Prompt",
 				"type" : "textinput",
 				"value" : ">"
@@ -91,7 +91,7 @@
 				"fraction" : true,
 				"max" : 0.5,
 				"min" : 0,
-				"order" : 106,
+				"order" : 108,
 				"precision" : 2,
 				"step" : 0.10000000000000001,
 				"text" : "Scanline Intensity",
@@ -112,18 +112,40 @@
 				"type" : "bool",
 				"value" : true
 			},
+			"terminalnooflines" : 
+			{
+				"fraction" : false,
+				"max" : 20,
+				"min" : 0,
+				"order" : 103,
+				"text" : "Terminal Number of Lines",
+				"type" : "slider",
+				"value" : 13
+			},
 			"terminaltextglow" : 
 			{
 				"condition" : "crteffects.value == true",
 				"fraction" : true,
 				"max" : 1,
 				"min" : 0,
-				"order" : 108,
+				"order" : 110,
 				"precision" : 2,
 				"step" : 0.10000000000000001,
 				"text" : "Terminal Text Glow (May clash with bloom)",
 				"type" : "slider",
 				"value" : 0.10000000000000001
+			},
+			"terminaltextscale" : 
+			{
+				"fraction" : true,
+				"max" : 32,
+				"min" : 1,
+				"order" : 102,
+				"precision" : 2,
+				"step" : 0.10000000000000001,
+				"text" : "Terminal Text Scale",
+				"type" : "slider",
+				"value" : 9
 			},
 			"textcolour" : 
 			{
@@ -134,7 +156,7 @@
 			},
 			"textgloweffect" : 
 			{
-				"order" : 103,
+				"order" : 105,
 				"text" : "Universal Bloom",
 				"type" : "bool",
 				"value" : true
@@ -145,7 +167,7 @@
 	"tags" : [ "Retro" ],
 	"title" : "Amber Dec Terminal",
 	"type" : "scene",
-	"version" : 4,
+	"version" : 5,
 	"visibility" : "public",
 	"workshopid" : "2271074053",
 	"workshopurl" : "steam://url/CommunityFilePage/2271074053"

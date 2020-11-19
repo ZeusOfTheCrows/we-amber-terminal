@@ -1,8 +1,8 @@
 {
 	"camera" : 
 	{
-		"center" : "-52.955 168.048 -1.000",
-		"eye" : "-52.955 168.048 0.000",
+		"center" : "0.000 0.000 -1.000",
+		"eye" : "0.000 0.000 0.000",
 		"up" : "0.000 1.000 0.000"
 	},
 	"general" : 
@@ -171,7 +171,7 @@
 			"solid" : true,
 			"text" : 
 			{
-				"script" : "'use strict';\n\nexport var scriptProperties = createScriptProperties()\n\t.addText({\n\t\tname: 'divider',\n\t\tlabel: 'Vertical Divider',\n\t\tvalue: '¦'\n\t})\n\t.finish();\n\nvar lineTexts = [\n\tscriptProperties.divider + \"     01 \" + scriptProperties.divider + \" Music Player                        \" + scriptProperties.divider,\n\tscriptProperties.divider + \" Artist \" + scriptProperties.divider + \" Placeholder artist                  \" + scriptProperties.divider,\n\tscriptProperties.divider + \"     01 \" + scriptProperties.divider + \" Placeholder                         \" + scriptProperties.divider,\n\tscriptProperties.divider + \"    [x] \" + scriptProperties.divider + \" Scanlines                           \" + scriptProperties.divider\n]\n\nexport function cursorClick(_event) {\n\tthisScene.getLayer(1).scale = new Vec3(1, 1, 1);  // This has to be the whole Vec3, setting one value alone doesn't work\n}\n\nexport function update(_value) {\n\t//this was more complicated, could possibly be removed entirely\n\treturn lineTexts[thisScene.getLayer(1).scale.z];\n}\n",
+				"script" : "'use strict';\n\nexport var scriptProperties = createScriptProperties()\n\t.addText({\n\t\tname: 'divider',\n\t\tlabel: 'Vertical Divider',\n\t\tvalue: '¦'\n\t})\n\t.finish();\n\nvar lineTexts = [\n\tscriptProperties.divider + \"     01 \" + scriptProperties.divider + \" Music Player                        \" + scriptProperties.divider,\n\tscriptProperties.divider + \" Artist \" + scriptProperties.divider + \" Placeholder artist                  \" + scriptProperties.divider,\n\tscriptProperties.divider + \"     01 \" + scriptProperties.divider + \" Placeholder                         \" + scriptProperties.divider,\n\tscriptProperties.divider + \"    [x] \" + scriptProperties.divider + \" Scanlines                           \" + scriptProperties.divider\n]\n\nexport function cursorClick(_event) {\n\tif (thisScene.getLayer(1).scale.z == 0) {\n\t\tthisScene.getLayer(1).scale = new Vec3(1, 1, 1);  // This has to be the whole Vec3, setting scale.z alone doesn't work\n\t}\n}\n\nexport function update(_value) {\n\t//this was more complicated, could possibly be removed entirely\n\treturn lineTexts[thisScene.getLayer(1).scale.z];\n}\n",
 				"scriptproperties" : 
 				{
 					"divider" : "¦"
@@ -218,7 +218,7 @@
 			"solid" : true,
 			"text" : 
 			{
-				"script" : "'use strict';\n\nexport var scriptProperties = createScriptProperties()\n\t.addText({\n\t\tname: 'divider',\n\t\tlabel: 'Vertical Divider',\n\t\tvalue: '¦'\n\t})\n\t.finish();\n\nvar lineTexts = [\n\tscriptProperties.divider + \"     02 \" + scriptProperties.divider + \" Autotype                            \" + scriptProperties.divider,\n\tscriptProperties.divider + \"  Title \" + scriptProperties.divider + \" Placeholder song                    \" + scriptProperties.divider,\n\tscriptProperties.divider + \"     02 \" + scriptProperties.divider + \" Placeholder                         \" + scriptProperties.divider,\n\tscriptProperties.divider + \"    [x] \" + scriptProperties.divider + \" Glow maybe?                         \" + scriptProperties.divider,\n]\n\nexport function cursorClick(_event) {\n\tthisScene.getLayer(1).scale = new Vec3(1, 1, 1);  // This has to be the whole Vec3, setting one value alone doesn't work\n}\n\nexport function update(_value) {\n\t//this was more complicated, could possibly be removed entirely\n\treturn lineTexts[thisScene.getLayer(1).scale.z];\n}\n",
+				"script" : "'use strict';\n\nexport var scriptProperties = createScriptProperties()\n\t.addText({\n\t\tname: 'divider',\n\t\tlabel: 'Vertical Divider',\n\t\tvalue: '¦'\n\t})\n\t.finish();\n\nvar lineTexts = [\n\tscriptProperties.divider + \"     02 \" + scriptProperties.divider + \" Autotype                            \" + scriptProperties.divider,\n\tscriptProperties.divider + \"  Title \" + scriptProperties.divider + \" Placeholder song                    \" + scriptProperties.divider,\n\tscriptProperties.divider + \"     02 \" + scriptProperties.divider + \" Placeholder                         \" + scriptProperties.divider,\n\tscriptProperties.divider + \"    [x] \" + scriptProperties.divider + \" Glow maybe?                         \" + scriptProperties.divider\n]\n\nexport function cursorClick(_event) {\n\tif (thisScene.getLayer(1).scale.z == 0) {\n\t\tthisScene.getLayer(1).scale = new Vec3(1, 1, 2);  // This has to be the whole Vec3, setting scale.z alone doesn't work\n\t}\n\t//thisScene.getLayer(8).visible = true;\n}\n\nexport function update(_value) {\n\t//this was more complicated, could possibly be removed entirely\n\treturn lineTexts[thisScene.getLayer(1).scale.z];\n}\n",
 				"scriptproperties" : 
 				{
 					"divider" : 
@@ -265,7 +265,7 @@
 			"solid" : true,
 			"text" : 
 			{
-				"script" : "'use strict';\n\nexport var scriptProperties = createScriptProperties()\n\t.addText({\n\t\tname: 'divider',\n\t\tlabel: 'Vertical Divider',\n\t\tvalue: '¦'\n\t})\n\t.finish();\n\nexport function cursorClick(_event) {\n\tif(thisScene.getLayer(1).scale.z == 0) {\n\t\t// This has to be the whole Vec3, setting one value alone doesn't work\n\t\tthisScene.getLayer(1).scale = new Vec3(1, 1, 3);  // open preferences screen\n\t} else {\n\t\tthisScene.getLayer(1).scale = new Vec3(1, 1, 0);  // exit and return\n\t}\n}\n\nexport function update(value) {\n\tif(thisScene.getLayer(1).scale.z == 0) {\n\t\tvalue = scriptProperties.divider + \"     03 \" + scriptProperties.divider + \" Preferences                         \" + scriptProperties.divider;\n\t} else {\n\t\tvalue = scriptProperties.divider + \"   Exit \" + scriptProperties.divider + \" Return to previous menu             \" + scriptProperties.divider;\n\t}\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nexport var scriptProperties = createScriptProperties()\n\t.addText({\n\t\tname: 'divider',\n\t\tlabel: 'Vertical Divider',\n\t\tvalue: '¦'\n\t})\n\t.finish();\n\nexport function cursorClick(_event) {\n\tif(thisScene.getLayer(1).scale.z == 0) {\n\t\t// This has to be the whole Vec3, setting scale.z alone doesn't work\n\t\tthisScene.getLayer(1).scale = new Vec3(1, 1, 3);  // open preferences screen\n\t} else {\n\t\tthisScene.getLayer(1).scale = new Vec3(1, 1, 0);  // exit and return\n\t}\n}\n\nexport function update(value) {\n\tif(thisScene.getLayer(1).scale.z == 0) {\n\t\tvalue = scriptProperties.divider + \"     03 \" + scriptProperties.divider + \" Preferences                         \" + scriptProperties.divider;\n\t} else {\n\t\tvalue = scriptProperties.divider + \"   Exit \" + scriptProperties.divider + \" Return to previous menu             \" + scriptProperties.divider;\n\t}\n\treturn value;\n}\n",
 				"scriptproperties" : 
 				{
 					"divider" : 
@@ -384,7 +384,7 @@
 			"solid" : true,
 			"text" : 
 			{
-				"script" : "'use strict';\n\nexport var scriptProperties = createScriptProperties()\n\t.addText({\n\t\tname: 'scrollingTextContents',\n\t\tlabel: 'ScrollingText',\n\t\tvalue: 'You shouldn’t see this unless you’re editing, please report it to me.'\n\t})\n\t.addSlider({\n\t\tname: 'outputNoOfLines',\n\t\tlabel: 'Number of lines',\n\t\tvalue: 13,\n\t\tmin: 0,\n\t\tmax: 20,\n\t\tinteger: false\n\t})\n\t.finish();\n\n//var completeOutput = scriptProperties.scrollingTextContents;\n\n//I declare this outside so we're not constantly creating and\n//deleting vars for performance reasons, I don't know if this\n//is necessary\nlet i = 0;\n\n// N.B. replaces spaces with “punctuation spaces” (U+2008)\n// as a workaround for WE eating leading spaces.\nfunction formatText(text){\n\treturn text.replace(/ /g, \" \");\n}\n\n// This does the heavy lifting of removing the older lines\n// from the terminal screen.\nfunction trimOutput(text, noOfLines){\n\tlet splitText = text.split(\"\\n\");\n\tif (splitText.length >= noOfLines){\n\t\ttext = splitText.splice((splitText.length-noOfLines), splitText.length);\n\t} else {\n\t\ttext = splitText; //.splice(splitText.length);\n\t}\n\treturn text.join(\"\\n\");\n}\n\nexport function update(output) {\n\t\n\toutput += scriptProperties.scrollingTextContents.charAt(i);  // append character to give the illusion of typing\n\tif (i <= scriptProperties.scrollingTextContents.length){  //loops around when it gets to the end of the text\n\t\ti++;\n\t} else {\n\t\toutput += \"\\n\\n\";  //add extra new lines at the end of the text\n\t\ti = 0;\n\t}\n\n\treturn formatText(trimOutput(output, scriptProperties.outputNoOfLines));\n}\n",
+				"script" : "'use strict';\n\nexport var scriptProperties = createScriptProperties()\n\t.addText({\n\t\tname: 'scrollingTextContents',\n\t\tlabel: 'ScrollingText',\n\t\tvalue: 'You shouldn’t see this unless you’re editing, please report it to me.'\n\t})\n\t.addSlider({\n\t\tname: 'outputNoOfLines',\n\t\tlabel: 'Number of lines',\n\t\tvalue: 13,\n\t\tmin: 0,\n\t\tmax: 20,\n\t\tinteger: false\n\t})\n\t.finish();\n\n//var completeOutput = scriptProperties.scrollingTextContents;\n\n//I declare this outside so we're not constantly creating and\n//deleting vars for performance reasons, I don't know if this\n//is necessary\nlet i = 0;\n\n// N.B. replaces spaces with “punctuation spaces” (U+2008)\n// as a workaround for WE eating leading spaces.\nfunction formatText(text){\n\treturn text.replace(/ /g, \" \");\n}\n\n// This does the heavy lifting of removing the older lines\n// from the terminal screen.\nfunction trimOutput(text, noOfLines){\n\tlet splitText = text.split(\"\\n\");\n\tif (splitText.length >= noOfLines){\n\t\ttext = splitText.splice((splitText.length-noOfLines), splitText.length);\n\t} else {\n\t\ttext = splitText; //.splice(splitText.length);\n\t}\n\treturn text.join(\"\\n\");\n}\n\nexport function update(output) {\n\tif (thisLayer.visible) {\n\t\toutput += scriptProperties.scrollingTextContents.charAt(i);  // append character to give the illusion of typing\n\t\tif (i <= scriptProperties.scrollingTextContents.length){  //loops around when it gets to the end of the text\n\t\t\ti++;\n\t\t} else {\n\t\t\toutput += \"\\n\\n\";  //add extra new lines at the end of the text\n\t\t\ti = 0;\n\t\t}\n\t}\n\n\treturn formatText(trimOutput(output, scriptProperties.outputNoOfLines));\n}\n",
 				"scriptproperties" : 
 				{
 					"outputNoOfLines" : 13,
@@ -393,7 +393,11 @@
 				"value" : ""
 			},
 			"verticalalign" : "bottom",
-			"visible" : false
+			"visible" : 
+			{
+				"script" : "'use strict';\n\n/**\n * @param {Boolean} value - for property 'visible'\n */\nexport function update(_value) {\n\tif (thisScene.getLayer(1).scale.z == 2) {return true}\n\telse {return false}\n}\n",
+				"value" : false
+			}
 		},
 		{
 			"alignment" : "center",

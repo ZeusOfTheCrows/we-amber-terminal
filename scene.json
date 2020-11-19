@@ -1,8 +1,8 @@
 {
 	"camera" : 
 	{
-		"center" : "0.000 0.000 -1.000",
-		"eye" : "0.000 0.000 0.000",
+		"center" : "-52.955 168.048 -1.000",
+		"eye" : "-52.955 168.048 0.000",
 		"up" : "0.000 1.000 0.000"
 	},
 	"general" : 
@@ -65,11 +65,7 @@
 			"anchor" : "none",
 			"angles" : "0.000 0.000 0.000",
 			"backgroundcolor" : "0.000 0.000 0.000",
-			"color" : 
-			{
-				"script" : "'use strict';\n\nexport function update(value) {\n\t//Colour is set in Terminal Screen VFX, please don't change here\n\treturn value;\n}\n",
-				"value" : "1.000 1.000 1.000"
-			},
+			"color" : "1.000 1.000 1.000",
 			"colorBlendMode" : 0,
 			"copybackground" : true,
 			"font" : "fonts/FSEX302-alt.ttf",
@@ -84,12 +80,16 @@
 			"parallaxDepth" : "1.000 1.000",
 			"perspective" : false,
 			"pointsize" : 9.0,
-			"scale" : "1.000 1.000 1.000",
+			"scale" : 
+			{
+				"script" : "'use strict';\n\nexport function update(value) {\n\t// The current page is stored as the z-scale of this value.\n\t// This is because I can't seem to create a new globally\n\t// shared variable, which is what I'd rather do.\n\treturn value;\n}\n",
+				"value" : "1.000 1.000 0.000"
+			},
 			"size" : "612.000 76.000",
 			"solid" : true,
 			"text" : 
 			{
-				"script" : "'use strict';\n\n/**\n * @param {String} value - for property 'text'\n */\nvar page0Header = \"Mem check... 8192 of 8192 bytes OK\\nAwaiting user input:\\n\";\nvar page1Header = \"VT100 (c) Basic Operating System Media Player\\nAwaiting user input\\n\";\n\n//I couldn't work out how to use the purported \"Shared\" object, so this\n// my not be the best way to do this...\nexport var currentPage = 0; //0 = main, 1 = music, 2 = undecided, 3 = prefs\n\nexport function update(value) {\n\tif (currentPage == 0){\n\t\tvalue = page0Header;\n\t} else if (currentPage == 1){\n\t\tvalue = page1Header;\n\t};\n\n\t//value.x = thisScene.getLayer('mplayer_skin_plain').origin.x;\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\n/**\n * @param {String} value - for property 'text'\n */\nvar headerTexts = [\n\t\"Mem check... 8192 of 8192 bytes OK\\nAwaiting user input:\\n\",\n\t\"VT100 (c) Basic Operating System Media Player\\nAwaiting user input:\\n\",\n\t\"Placeholder\",\n\t\"VT100 (c) User preference configurator\\nAwaiting user input:\\n\"\n]\n\n//I couldn't work out how to use the purported \"Shared\" object, so this\n// my not be the best way to do this...\n//export var currentPage = 0; //0 = main, 1 = music, 2 = autotype, 3 = prefs\n\nexport function update(value) {\n\tvalue = headerTexts[thisScene.getLayer(1).scale.z];\n\treturn value;\n}\n",
 				"value" : "Mem check... 8192 of 8192 bytes OK\nAwaiting user input:"
 			},
 			"verticalalign" : "top",
@@ -171,21 +171,17 @@
 			"solid" : true,
 			"text" : 
 			{
-				"script" : "'use strict';\n\nvar selectedThisPage = false;\n\nexport var scriptProperties = createScriptProperties()\n\t.addText({\n\t\tname: 'divider',\n\t\tlabel: 'Vertical Divider',\n\t\tvalue: '¦'\n\t})\n\t.finish();\n\nexport function cursorClick(_event) {\n\tselectedThisPage = !selectedThisPage;\n\t//thisScene.getLayer(2).currentPage = 1;\n\t//testOutput = thisScene.getLayer(2).currentPage;  // why is this undefined? how do I do global vars?\n}\n\nexport function update(value) {\n\tif(selectedThisPage){\n\t\tvalue = scriptProperties.divider + \"     01 \" +  scriptProperties.divider + \" Coming soon (maybe)                 \" + scriptProperties.divider;\n\t}\n\t//else if(thisScene.getLayer('Output Line 1').selectedThisPage){\n\t//\toutput = scriptProperties.divider + \"     01 \" +  scriptProperties.divider + \" Calendar Test                       \" + scriptProperties.divider;\n\t//}\n\telse{\n\t\tvalue = scriptProperties.divider + \"     01 \" +  scriptProperties.divider + \" Music Player                        \" + scriptProperties.divider;\n\t}\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nexport var scriptProperties = createScriptProperties()\n\t.addText({\n\t\tname: 'divider',\n\t\tlabel: 'Vertical Divider',\n\t\tvalue: '¦'\n\t})\n\t.finish();\n\nvar lineTexts = [\n\tscriptProperties.divider + \"     01 \" + scriptProperties.divider + \" Music Player                        \" + scriptProperties.divider,\n\tscriptProperties.divider + \" Artist \" + scriptProperties.divider + \" Placeholder artist                  \" + scriptProperties.divider,\n\tscriptProperties.divider + \"     01 \" + scriptProperties.divider + \" Placeholder                         \" + scriptProperties.divider,\n\tscriptProperties.divider + \"    [x] \" + scriptProperties.divider + \" Scanlines                           \" + scriptProperties.divider\n]\n\nexport function cursorClick(_event) {\n\tthisScene.getLayer(1).scale = new Vec3(1, 1, 1);  // This has to be the whole Vec3, setting one value alone doesn't work\n}\n\nexport function update(_value) {\n\t//this was more complicated, could possibly be removed entirely\n\treturn lineTexts[thisScene.getLayer(1).scale.z];\n}\n",
 				"scriptproperties" : 
 				{
-					"divider" : 
-					{
-						"user" : "verticalbar",
-						"value" : "¦"
-					}
+					"divider" : "¦"
 				},
 				"value" : "¦     01 ¦ Enjoy my terrible                   ¦"
 			},
 			"verticalalign" : "top",
 			"visible" : 
 			{
-				"script" : "'use strict';\n\n/**\n * @param {Boolean} value - for property 'visible'\n */\nexport var selectedThisPage = false\n\nexport function update(value) {\n\t\n\treturn value;\n}\n\n/**\n * @param {ICursorEvent} event\n */\nexport function cursorClick(event) {\n\tselectedThisPage =true;\n}\n",
+				"script" : "'use strict';\n\n/**\n * @param {Boolean} value - for property 'visible'\n */\nexport var selectedThisPage = false\n\nexport function update(value) {\n\t\n\treturn value;\n}\n\n/**\n * @param {ICursorEvent} event\n */\nexport function cursorClick(event) {\n\tselectedThisPage =true;\n\tthisScene.getLayer(1).origin.x;\n}\n",
 				"value" : true
 			}
 		},
@@ -222,7 +218,7 @@
 			"solid" : true,
 			"text" : 
 			{
-				"script" : "'use strict';\n\nvar selectedThisPage = false;\n\nexport var scriptProperties = createScriptProperties()\n\t.addText({\n\t\tname: 'divider',\n\t\tlabel: 'Vertical Divider',\n\t\tvalue: '¦'\n\t})\n\t.finish();\n\nexport function cursorClick(event) {\n\tselectedThisPage = !selectedThisPage;\n}\n\nexport function update(value) {\n\tif(selectedThisPage){\n\t\tvalue = scriptProperties.divider + \"     02 \" +  scriptProperties.divider + \" Coming Soon (Maybe)                 \" + scriptProperties.divider;\n\t}\n\telse{\n\t\tvalue = scriptProperties.divider + \"     02 \" +  scriptProperties.divider + \" Autotype                            \" + scriptProperties.divider;\n\t}\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nexport var scriptProperties = createScriptProperties()\n\t.addText({\n\t\tname: 'divider',\n\t\tlabel: 'Vertical Divider',\n\t\tvalue: '¦'\n\t})\n\t.finish();\n\nvar lineTexts = [\n\tscriptProperties.divider + \"     02 \" + scriptProperties.divider + \" Autotype                            \" + scriptProperties.divider,\n\tscriptProperties.divider + \"  Title \" + scriptProperties.divider + \" Placeholder song                    \" + scriptProperties.divider,\n\tscriptProperties.divider + \"     02 \" + scriptProperties.divider + \" Placeholder                         \" + scriptProperties.divider,\n\tscriptProperties.divider + \"    [x] \" + scriptProperties.divider + \" Glow maybe?                         \" + scriptProperties.divider,\n]\n\nexport function cursorClick(_event) {\n\tthisScene.getLayer(1).scale = new Vec3(1, 1, 1);  // This has to be the whole Vec3, setting one value alone doesn't work\n}\n\nexport function update(_value) {\n\t//this was more complicated, could possibly be removed entirely\n\treturn lineTexts[thisScene.getLayer(1).scale.z];\n}\n",
 				"scriptproperties" : 
 				{
 					"divider" : 
@@ -269,7 +265,7 @@
 			"solid" : true,
 			"text" : 
 			{
-				"script" : "\n'use strict';\n\nvar selectedThisPage = false;\n\nexport var scriptProperties = createScriptProperties()\n\t.addText({\n\t\tname: 'divider',\n\t\tlabel: 'Vertical Divider',\n\t\tvalue: '¦'\n\t})\n\t.finish();\n\nexport function cursorClick(event) {\n\tselectedThisPage = !selectedThisPage;\n}\n\nexport function update(value) {\n\tif(selectedThisPage){\n\t\tvalue = scriptProperties.divider + \"     03 \" +  scriptProperties.divider + \" Coming Soon (Maybe)                 \" + scriptProperties.divider;\n\t}\n\telse{\n\t\tvalue = scriptProperties.divider + \"     03 \" +  scriptProperties.divider + \" User Preferences                    \" + scriptProperties.divider;\n\t}\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nexport var scriptProperties = createScriptProperties()\n\t.addText({\n\t\tname: 'divider',\n\t\tlabel: 'Vertical Divider',\n\t\tvalue: '¦'\n\t})\n\t.finish();\n\nexport function cursorClick(_event) {\n\tif(thisScene.getLayer(1).scale.z == 0) {\n\t\t// This has to be the whole Vec3, setting one value alone doesn't work\n\t\tthisScene.getLayer(1).scale = new Vec3(1, 1, 3);  // open preferences screen\n\t} else {\n\t\tthisScene.getLayer(1).scale = new Vec3(1, 1, 0);  // exit and return\n\t}\n}\n\nexport function update(value) {\n\tif(thisScene.getLayer(1).scale.z == 0) {\n\t\tvalue = scriptProperties.divider + \"     03 \" + scriptProperties.divider + \" Preferences                         \" + scriptProperties.divider;\n\t} else {\n\t\tvalue = scriptProperties.divider + \"   Exit \" + scriptProperties.divider + \" Return to previous menu             \" + scriptProperties.divider;\n\t}\n\treturn value;\n}\n",
 				"scriptproperties" : 
 				{
 					"divider" : 
@@ -437,6 +433,39 @@
 					"visible" : true
 				},
 				{
+					"file" : "effects/workshop/2116673772/crt_scan_line/effect.json",
+					"id" : 192,
+					"name" : "CRT FX",
+					"passes" : 
+					[
+						{
+							"constantshadervalues" : 
+							{
+								"Noise Intensity" : 
+								{
+									"user" : "crtnoise",
+									"value" : 0.20000000000000001
+								},
+								"Noise Scale" : 1.6799999475479126,
+								"Scan Line Intensity" : 
+								{
+									"user" : "scanlineintensity",
+									"value" : 0.12
+								},
+								"Scan Line Size" : 2.5499999999999998,
+								"Scan Line Speed" : 0,
+								"Vignette Intensity" : 0.23999999999999999
+							},
+							"id" : 193
+						}
+					],
+					"visible" : 
+					{
+						"user" : "crteffects",
+						"value" : true
+					}
+				},
+				{
 					"file" : "effects/fisheye/effect.json",
 					"id" : 104,
 					"name" : "Pincushion FX",
@@ -530,40 +559,7 @@
 								"BLENDMODE" : 9
 							},
 							"id" : 195,
-							"textures" : [ null, "_rt_imageLayerComposite_102_b" ]
-						}
-					],
-					"visible" : 
-					{
-						"user" : "crteffects",
-						"value" : true
-					}
-				},
-				{
-					"file" : "effects/workshop/2116673772/crt_scan_line/effect.json",
-					"id" : 192,
-					"name" : "CRT FX",
-					"passes" : 
-					[
-						{
-							"constantshadervalues" : 
-							{
-								"Noise Intensity" : 
-								{
-									"user" : "crtnoise",
-									"value" : 0.20000000000000001
-								},
-								"Noise Scale" : 1.6799999475479126,
-								"Scan Line Intensity" : 
-								{
-									"user" : "scanlineintensity",
-									"value" : 0.12
-								},
-								"Scan Line Size" : 2.5600000000000001,
-								"Scan Line Speed" : 0,
-								"Vignette Intensity" : 0.23999999999999999
-							},
-							"id" : 193
+							"textures" : [ null, "_rt_imageLayerComposite_102_a" ]
 						}
 					],
 					"visible" : 

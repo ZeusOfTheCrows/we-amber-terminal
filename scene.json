@@ -1,8 +1,8 @@
 {
 	"camera" : 
 	{
-		"center" : "-52.340 -28.242 -1.000",
-		"eye" : "-52.340 -28.242 0.000",
+		"center" : "-117.858 177.670 -1.000",
+		"eye" : "-117.858 177.670 0.000",
 		"up" : "0.000 1.000 0.000"
 	},
 	"general" : 
@@ -93,7 +93,11 @@
 				"value" : "Mem check... 8192 of 8192 bytes OK\nAwaiting user input:"
 			},
 			"verticalalign" : "top",
-			"visible" : true
+			"visible" : 
+			{
+				"script" : "'use strict';\n\n/**\n * @param {Boolean} value - for property 'visible'\n */\nexport function update(_value) {\n\tif (thisScene.getLayer(1).scale.z != 2) {return true}\n\telse {return false}\n}",
+				"value" : true
+			}
 		},
 		{
 			"alpha" : 1.0,
@@ -136,7 +140,11 @@
 				"value" : "+--------+-------------------------------------+\n¦ Num    ¦ Option                              ¦\n+--------+-------------------------------------+"
 			},
 			"verticalalign" : "top",
-			"visible" : true
+			"visible" : 
+			{
+				"script" : "'use strict';\n\n/**\n * @param {Boolean} value - for property 'visible'\n */\nexport function update(_value) {\n\tif (thisScene.getLayer(1).scale.z != 2) {return true}\n\telse {return false}\n}",
+				"value" : true
+			}
 		},
 		{
 			"alpha" : 1.0,
@@ -181,7 +189,7 @@
 			"verticalalign" : "top",
 			"visible" : 
 			{
-				"script" : "'use strict';\n\n/**\n * @param {Boolean} value - for property 'visible'\n */\nexport var selectedThisPage = false\n\nexport function update(value) {\n\t\n\treturn value;\n}\n\n/**\n * @param {ICursorEvent} event\n */\nexport function cursorClick(event) {\n\tselectedThisPage =true;\n\tthisScene.getLayer(1).origin.x;\n}\n",
+				"script" : "'use strict';\n\n/**\n * @param {Boolean} value - for property 'visible'\n */\nexport function update(_value) {\n\tif (thisScene.getLayer(1).scale.z != 2) {return true}\n\telse {return false}\n}",
 				"value" : true
 			}
 		},
@@ -230,7 +238,11 @@
 				"value" : "¦     02 ¦ attempts at coding                  ¦"
 			},
 			"verticalalign" : "top",
-			"visible" : true
+			"visible" : 
+			{
+				"script" : "'use strict';\n\n/**\n * @param {Boolean} value - for property 'visible'\n */\nexport function update(_value) {\n\tif (thisScene.getLayer(1).scale.z != 2) {return true}\n\telse {return false}\n}",
+				"value" : true
+			}
 		},
 		{
 			"alpha" : 1.0,
@@ -277,7 +289,11 @@
 				"value" : "¦     03 ¦ in javascript...                    ¦"
 			},
 			"verticalalign" : "top",
-			"visible" : true
+			"visible" : 
+			{
+				"script" : "'use strict';\n\n/**\n * @param {Boolean} value - for property 'visible'\n */\nexport function update(_value) {\n\tif (thisScene.getLayer(1).scale.z != 2) {return true}\n\telse {return false}\n}",
+				"value" : true
+			}
 		},
 		{
 			"alpha" : 1.0,
@@ -312,7 +328,11 @@
 			"solid" : true,
 			"text" : "+--------+-------------------------------------+",
 			"verticalalign" : "top",
-			"visible" : true
+			"visible" : 
+			{
+				"script" : "'use strict';\n\n/**\n * @param {Boolean} value - for property 'visible'\n */\nexport function update(_value) {\n\tif (thisScene.getLayer(1).scale.z != 2) {return true}\n\telse {return false}\n}\n",
+				"value" : true
+			}
 		},
 		{
 			"alpha" : 1.0,
@@ -365,7 +385,7 @@
 			},
 			"color" : 
 			{
-				"script" : "'use strict';\n\nvar visibleColour = new Vec3(1, 1, 1);\n\nexport function cursorEnter(_event) {\n\tvisibleColour = new Vec3(0 ,0, 0);\n\treturn visibleColour;\n}\nexport function cursorLeave(_event) {\n\tvisibleColour = new Vec3(1, 1, 1);\n\treturn visibleColour;\t\n}\n\nexport function update(_value) {\n\treturn visibleColour;\n}",
+				"script" : "'use strict';\n\nvar visibleColour = new Vec3(1, 1, 1);\n\nexport function cursorEnter(_event) {\n\tvisibleColour = new Vec3(0 ,0, 0);\n\treturn visibleColour;\n}\nexport function cursorLeave(_event) {\n\tvisibleColour = new Vec3(1, 1, 1);\n\treturn visibleColour;\t\n}\n\nexport function cursorClick(_event) {\n\tthisScene.getLayer(1).scale = new Vec3(1, 1, 0);  // exit and return\n}\n\nexport function update(_value) {\n\treturn visibleColour;\n}\n",
 				"value" : "1.000 1.000 1.000"
 			},
 			"colorBlendMode" : 0,

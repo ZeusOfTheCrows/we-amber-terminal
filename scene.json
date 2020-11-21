@@ -1,8 +1,8 @@
 {
 	"camera" : 
 	{
-		"center" : "-152.928 95.517 -1.000",
-		"eye" : "-152.928 95.517 0.000",
+		"center" : "-52.340 -28.242 -1.000",
+		"eye" : "-52.340 -28.242 0.000",
 		"up" : "0.000 1.000 0.000"
 	},
 	"general" : 
@@ -667,17 +667,12 @@
 			"perspective" : false,
 			"pointsize" : 5.5,
 			"scale" : "1.000 1.000 1.000",
-			"size" : "163.000 25.000",
+			"size" : "181.000 25.000",
 			"solid" : true,
 			"text" : 
 			{
-				"script" : "/*------------------------------------------------------------------\\\n|          Not my script, all credit goes to fug4life:              |\n|(https://steamcommunity.com/sharedfiles/filedetails/?id=2192230436)|\n\\------------------------------------------------------------------*/\n\n// Usage: Some exported vars may not work, I've twiddled with the code a bit for my own purposes\n// Bind to a Text Layer, Text Property (to the right of where you can enter text, click on the gear/cog icon and select bind script). Compile the script to ensure Script Properties show up in editor. Run Scripts to view live in editor or Apply Wallpaper to view live on Desktop.\n\n'use strict';\n\nexport let __workshopId = '2108644365';\n\nexport var scriptProperties = createScriptProperties()\n  .addCheckbox({\n    name: 'useDelimiter',\n    label: 'Use Delimiter',\n    value: true\n  })\n  .addText({\n    name: 'addDelimiter',\n    label: 'Delimiter',\n    value: '-'\n  })\n  .finish();\n\nvar delimiterValue;\n\n\nfunction leftPad(numToPad) {\n  return (\"00\" + numToPad).slice(-2);\n}\n\n\nexport function update(value) {\n  \n  if (scriptProperties.useDelimiter == true) {\n    delimiterValue = scriptProperties.addDelimiter\n  }\n  else {\n    delimiterValue = \" \";\n  }\n  \n  let date = new Date(); {\n    let returnVal = \"\";\n    returnVal += date.getFullYear() + delimiterValue + leftPad(date.getDate()) + delimiterValue + leftPad(date.getMonth()+1);\n    \n    return returnVal;\n  }\n}\n",
-				"scriptproperties" : 
-				{
-					"addDelimiter" : "-",
-					"useDelimiter" : true
-				},
-				"value" : "1985-10-2"
+				"script" : "'use strict';\n\nvar fullDate = \"1985-10-21\";\nvar delimiter = \"-\";\nvar dateFormat = \"iso\";\n\nfunction leftPad(numToPad) {\n\treturn (\"00\" + numToPad).slice(-2);\n}\n\nexport function applyUserProperties(changedUserProperties) {\n\tif(changedUserProperties.hasOwnProperty(\"dateformat\")) {\n\t\tdateFormat = changedUserProperties.dateformat;\n\t} else if(changedUserProperties.hasOwnProperty(\"datedelimiter\")) {\n\t\tdelimiter = changedUserProperties.datedelimiter;\n\t}\n}\n\n\nexport function update(_value) {\n\n\tlet date = new Date();\n\n\tif (dateFormat == \"iso\") {\n\t\tfullDate = date.getFullYear() + delimiter + leftPad(date.getDate()) + delimiter + leftPad(date.getMonth()+1);\n\t} else if (dateFormat == \"std\") {\n\t\tfullDate = leftPad(date.getDate()) + delimiter + leftPad(date.getMonth()+1) + delimiter + date.getFullYear();\n\t} else {\n\t\tfullDate = leftPad(date.getMonth()+1) + delimiter + leftPad(date.getDate()) + delimiter + date.getFullYear();\n\t}\n\n\treturn fullDate;\n}",
+				"value" : "1985-10-21"
 			},
 			"verticalalign" : "center",
 			"visible" : true

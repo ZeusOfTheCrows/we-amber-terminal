@@ -25,7 +25,7 @@
 				"fraction" : true,
 				"max" : 1,
 				"min" : 0,
-				"order" : 112,
+				"order" : 114,
 				"precision" : 2,
 				"step" : 0.10000000000000001,
 				"text" : "Clock Text Glow (May clash with bloom)",
@@ -59,12 +59,42 @@
 				"type" : "slider",
 				"value" : 0.20000000000000001
 			},
+			"datedelimiter" : 
+			{
+				"order" : 113,
+				"text" : "Date Delimiter",
+				"type" : "textinput",
+				"value" : "-"
+			},
+			"dateformat" : 
+			{
+				"condition" : "",
+				"options" : 
+				[
+					{
+						"label" : "ISO",
+						"value" : "iso"
+					},
+					{
+						"label" : "Standard",
+						"value" : "std"
+					},
+					{
+						"label" : "American",
+						"value" : "usa"
+					}
+				],
+				"order" : 112,
+				"text" : "Date Format",
+				"type" : "combo",
+				"value" : "iso"
+			},
 			"lampglow" : 
 			{
 				"fraction" : true,
 				"max" : 0.5,
 				"min" : 0,
-				"order" : 113,
+				"order" : 115,
 				"precision" : 2,
 				"step" : 0.10000000000000001,
 				"text" : "Lamp Glow (May clash with bloom)",
@@ -124,10 +154,10 @@
 						"value" : "fonts/glass-tty.ttf"
 					}
 				],
-				"order" : 114,
+				"order" : 116,
 				"text" : "Terminal Font",
 				"type" : "combo",
-				"value" : "FSEX302-alt.ttf"
+				"value" : "fonts/FSEX302-alt.ttf"
 			},
 			"terminaltextglow" : 
 			{

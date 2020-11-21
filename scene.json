@@ -1,8 +1,8 @@
 {
 	"camera" : 
 	{
-		"center" : "0.000 0.000 -1.000",
-		"eye" : "0.000 0.000 0.000",
+		"center" : "-152.928 95.517 -1.000",
+		"eye" : "-152.928 95.517 0.000",
 		"up" : "0.000 1.000 0.000"
 	},
 	"general" : 
@@ -149,7 +149,7 @@
 			},
 			"color" : 
 			{
-				"script" : "'use strict';\n\nvar visibleColour = new Vec3(1, 1, 1);\n\nexport function cursorEnter(event) {\n\tvisibleColour = new Vec3(0, 0, 0);\n\treturn visibleColour;\n}\nexport function cursorLeave(event) {\n\tvisibleColour = new Vec3(1, 1, 1);\n\treturn visibleColour;\n}\n\nexport function update(value) {\n\t//Colour is set in terminal screen vfx, please don't edit here\n\treturn visibleColour;\n}",
+				"script" : "'use strict';\n\nvar visibleColour = new Vec3(1, 1, 1);\n\nexport function cursorEnter(_event) {  // the “_” is to stop the autofill from complaining\n\tvisibleColour = new Vec3(0, 0, 0);\n\treturn visibleColour;\n}\nexport function cursorLeave(_event) {\n\tvisibleColour = new Vec3(1, 1, 1);\n\treturn visibleColour;\n}\n\nexport function update(_value) {\n\t//Colour is set in terminal screen vfx, please don't edit here\n\treturn visibleColour;\n}",
 				"value" : "1.000 1.000 1.000"
 			},
 			"colorBlendMode" : 0,
@@ -191,12 +191,12 @@
 			"angles" : "0.000 0.000 0.000",
 			"backgroundcolor" : 
 			{
-				"script" : "'use strict';\n\nvar visibleColour = new Vec3(0, 0, 0);\n\nexport function cursorEnter(event) {\n\tvisibleColour = new Vec3(1, 1, 1);\n\treturn visibleColour;\n}\nexport function cursorLeave(event) {\n\tvisibleColour = new Vec3(0, 0, 0);\n\treturn visibleColour;\t\n}\n\nexport function update(value) {\n\treturn visibleColour;\n}",
+				"script" : "'use strict';\n\nvar visibleColour = new Vec3(0, 0, 0);\n\nexport function cursorEnter(_event) {\n\tvisibleColour = new Vec3(1, 1, 1);\n\treturn visibleColour;\n}\nexport function cursorLeave(_event) {\n\tvisibleColour = new Vec3(0, 0, 0);\n\treturn visibleColour;\t\n}\n\nexport function update(_value) {\n\treturn visibleColour;\n}",
 				"value" : "0.000 0.000 0.000"
 			},
 			"color" : 
 			{
-				"script" : "'use strict';\n\nvar visibleColour = new Vec3(1, 1, 1);\n\nexport function cursorEnter(event) {\n\tvisibleColour = new Vec3(0, 0, 0);\n\treturn visibleColour;\n}\nexport function cursorLeave(event) {\n\tvisibleColour = new Vec3(1, 1, 1);\n\treturn visibleColour;\t\n}\n\nexport function update(value) {\n\t//Colour is set in terminal screen vfx, please don't edit here\n\treturn visibleColour;\n}",
+				"script" : "'use strict';\n\nvar visibleColour = new Vec3(1, 1, 1);\n\nexport function cursorEnter(_event) {\n\tvisibleColour = new Vec3(0 ,0, 0);\n\treturn visibleColour;\n}\nexport function cursorLeave(_event) {\n\tvisibleColour = new Vec3(1, 1, 1);\n\treturn visibleColour;\t\n}\n\nexport function update(_value) {\n\treturn visibleColour;\n}",
 				"value" : "1.000 1.000 1.000"
 			},
 			"colorBlendMode" : 0,
@@ -319,9 +319,53 @@
 			"anchor" : "none",
 			"angles" : "0.000 0.000 0.000",
 			"backgroundcolor" : "0.000 0.000 0.000",
+			"color" : "1.000 1.000 1.000",
+			"colorBlendMode" : 0,
+			"copybackground" : true,
+			"font" : "fonts/FSEX302-alt.ttf",
+			"horizontalalign" : "left",
+			"id" : 172,
+			"ledsource" : false,
+			"locktransforms" : true,
+			"name" : "Autotyped Code",
+			"opaquebackground" : true,
+			"origin" : "1332.000 1089.000 0.000",
+			"padding" : 32,
+			"parallaxDepth" : "1.000 1.000",
+			"perspective" : false,
+			"pointsize" : 9.0,
+			"scale" : "1.000 1.000 1.000",
+			"size" : "2.000 2.000",
+			"solid" : true,
+			"text" : 
+			{
+				"script" : "'use strict';\n\nexport var scriptProperties = createScriptProperties()\n\t.addText({\n\t\tname: 'scrollingTextContents',\n\t\tlabel: 'ScrollingText',\n\t\tvalue: 'You shouldn’t see this unless you’re editing, please report it to me.'\n\t})\n\t.addSlider({\n\t\tname: 'outputNoOfLines',\n\t\tlabel: 'Number of lines',\n\t\tvalue: 13,\n\t\tmin: 0,\n\t\tmax: 20,\n\t\tinteger: false\n\t})\n\t.finish();\n\n//var completeOutput = scriptProperties.scrollingTextContents;\n\n//I declare this outside so we're not constantly creating and\n//deleting vars for performance reasons, I don't know if this\n//is necessary\nlet i = 0;\n\n// N.B. replaces spaces with “punctuation spaces” (U+2008)\n// as a workaround for WE eating leading spaces.\nfunction formatText(text){\n\treturn text.replace(/ /g, \" \");\n}\n\n// This does the heavy lifting of removing the older lines\n// from the terminal screen.\nfunction trimOutput(text, noOfLines){\n\tlet splitText = text.split(\"\\n\");\n\tif (splitText.length >= noOfLines){\n\t\ttext = splitText.splice((splitText.length-noOfLines), splitText.length);\n\t} else {\n\t\ttext = splitText; //.splice(splitText.length);\n\t}\n\treturn text.join(\"\\n\");\n}\n\nexport function update(output) {\n\tif (thisLayer.visible) {\n\t\toutput += scriptProperties.scrollingTextContents.charAt(i);  // append character to give the illusion of typing\n\t\tif (i <= scriptProperties.scrollingTextContents.length){  //loops around when it gets to the end of the text\n\t\t\ti++;\n\t\t} else {\n\t\t\toutput += \"\\n\\n\";  //add extra new lines at the end of the text\n\t\t\ti = 0;\n\t\t}\n\t} else {\n\t\toutput = \"\";\n\t\ti = 0;\n\t}\n\n\treturn formatText(trimOutput(output, scriptProperties.outputNoOfLines));\n}",
+				"scriptproperties" : 
+				{
+					"outputNoOfLines" : 12,
+					"scrollingTextContents" : "struct group_info init_groups={ \n.usage=ATOMIC_INIT(2) \n}; \n \nstruct group_info \n    *groups_alloc(int gidsetsize){ \n  struct group_info *group_info; \n  int nblocks; \n  int i; \n \n  nblocks=( \n    gidsetsize+NGROUPS_PER_BLOCK-1 \n  )/NGROUPS_PER_BLOCK; \n \n  /* Make sure we always allocate at \n  least one indirect block pointer */ \n \n  nblocks=nblocks ? : 1; \n  group_info=kmalloc(sizeof(*group_info) \n  +nblocks*sizeof(gid_t *), GFP_USER); \n  if (!group_info){ \n    return NULL; \n  } \n  group_info->ngroups=gidsetsize; \n  group_info->nblocks=nblocks; \n  atomic_set(&group_info->usage, 1); \n \n  if (gidsetsize<=NGROUPS_SMALL){ \n    group_info->blocks[0]= \n       group_info->small_block; \n  } else { \n    for (i=0; i<nblocks; i++) { \n      gid_t *b; \n      b=(void *)__get_free_page(GFP_USER); \n      if (!b) \n        goto out_undo_partial_alloc; \n      group_info->blocks[i]=b; \n    } \n  } \n  return group_info; \n \nout_undo_partial_alloc: \n  while (--i>=0) { \n    free_page((unsigned long) \n       group_info->blocks[i]); \n  } \n  kfree(group_info); \n  return NULL; \n} \n \nEXPORT_SYMBOL(groups_alloc); \n \nvoid groups_free( \n    struct group_info *group_info) \n{ \n  if (group_info->blocks[0] \n      !=group_info->small_block) { \n    int i; \n    for (i=0; i<group_info->nblocks; i++) \n      free_page((unsigned long) \n        group_info->blocks[i]); \n  } \n  kfree(group_info); \n} \n \nEXPORT_SYMBOL(groups_free); \n \n/* export the group_info \nto a user-space array */ \n \nstatic int groups_to_user( \n    gid_t __user *grouplist, \n    const struct group_info *group_info \n){ \n  int i; \n  unsigned int count=group_info->ngroups; \n \n  for (i=0; i<group_info->nblocks; i++) { \n    unsigned int cp_count=min( \n        NGROUPS_PER_BLOCK, count \n    ); \n    unsigned int len=cp_count*sizeof( \n        *grouplist \n    ); \n \n    if (copy_to_user( \n        grouplist, group_info->blocks[i], len \n    )){ \n      return -EFAULT; \n \n    grouplist+=NGROUPS_PER_BLOCK; \n    count-=cp_count; \n    } \n} \nreturn 0;"
+				},
+				"value" : ""
+			},
+			"verticalalign" : "bottom",
+			"visible" : 
+			{
+				"script" : "'use strict';\n\n/**\n * @param {Boolean} value - for property 'visible'\n */\nexport function update(_value) {\n\tif (thisScene.getLayer(1).scale.z == 2) {return true}\n\telse {return false}\n}\n",
+				"value" : true
+			}
+		},
+		{
+			"alpha" : 1.0,
+			"anchor" : "none",
+			"angles" : "0.000 0.000 0.000",
+			"backgroundcolor" : 
+			{
+				"script" : "'use strict';\n\nvar visibleColour = new Vec3(0, 0, 0);\n\nexport function cursorEnter(_event) {\n\tvisibleColour = new Vec3(1, 1, 1);\n\treturn visibleColour;\n}\nexport function cursorLeave(_event) {\n\tvisibleColour = new Vec3(0, 0, 0);\n\treturn visibleColour;\t\n}\n\nexport function update(_value) {\n\treturn visibleColour;\n}",
+				"value" : "0.000 0.000 0.000"
+			},
 			"color" : 
 			{
-				"script" : "'use strict';\n\n/**\n * @param {Vec3} value - for property 'color'\n */\nexport function update(value) {\n\t//Colour is set in terminal screen vfx, please don't edit here\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nvar visibleColour = new Vec3(1, 1, 1);\n\nexport function cursorEnter(_event) {\n\tvisibleColour = new Vec3(0 ,0, 0);\n\treturn visibleColour;\n}\nexport function cursorLeave(_event) {\n\tvisibleColour = new Vec3(1, 1, 1);\n\treturn visibleColour;\t\n}\n\nexport function update(_value) {\n\treturn visibleColour;\n}",
 				"value" : "1.000 1.000 1.000"
 			},
 			"colorBlendMode" : 0,
@@ -343,11 +387,11 @@
 			"solid" : true,
 			"text" : 
 			{
-				"script" : "'use strict';\n\nexport var scriptProperties = createScriptProperties()\n\t.addText({\n\t\tname: 'prompt',\n\t\tlabel: 'Prompt',\n\t\tvalue: '>'\n\t})\n\t.addText({\n\t\tname: 'blinkCursorOn',\n\t\tlabel: 'Cursor On',\n\t\tvalue: '█'\n\t})\n\t.addText({\n\t\tname: 'blinkCursorOff',\n\t\tlabel: 'Cursor Off',\n\t\tvalue: '_'\n\t})\n\t.finish();\n\nvar blinkCursors = [scriptProperties.blinkCursorOn, scriptProperties.blinkCursorOff]\n\nexport function update(value) {\n\tlet time = new Date();\n\tvar prompt = scriptProperties.prompt;\n\tvar blinkingCursor = blinkCursors[(time.getSeconds()%2)];\n\n\tvalue = prompt.slice(0, 48) + blinkingCursor;\n\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nexport var scriptProperties = createScriptProperties()\n\t.addText({\n\t\tname: 'prompt',\n\t\tlabel: 'Prompt',\n\t\tvalue: '>'\n\t})\n\t.addText({\n\t\tname: 'blinkCursorOn',\n\t\tlabel: 'Cursor On',\n\t\tvalue: '█'\n\t})\n\t.addText({\n\t\tname: 'blinkCursorOff',\n\t\tlabel: 'Cursor Off',\n\t\tvalue: '_'\n\t})\n\t.finish();\n\nvar blinkCursors = [scriptProperties.blinkCursorOn, scriptProperties.blinkCursorOff]\nvar input = \"\";\n\nexport function update(_value) {\n\tlet time = new Date();\n\t//var prompt = scriptProperties.prompt;\n\tvar blinkingCursor = blinkCursors[(time.getSeconds()%2)];\n\tif (thisScene.getLayer(3).backgroundcolor.z == 1) {\n\t\tinput = \"mplayer\";\n\t} else if (thisScene.getLayer(4).backgroundcolor.z == 1) {\n\t\tinput = \"type\";\n\t} else if (thisScene.getLayer(5).backgroundcolor.z == 1) {\n\t\tinput = \"config\";\n\t} else {\n\t\tinput = \"\";\n\t}\n\n\tif (thisScene.getLayer(1).scale.z != 0) {  // if we are not on the main page\n\t\tinput = \"exit\";\n\t}\n\n\treturn (scriptProperties.prompt.slice(0, 40) + input + blinkingCursor).padEnd(48, \" \");\n}\n",
 				"scriptproperties" : 
 				{
-					"blinkCursorOff" : "█",
-					"blinkCursorOn" : "_",
+					"blinkCursorOff" : "_",
+					"blinkCursorOn" : "█",
 					"prompt" : 
 					{
 						"user" : "prompt",
@@ -358,46 +402,6 @@
 			},
 			"verticalalign" : "top",
 			"visible" : true
-		},
-		{
-			"alpha" : 1.0,
-			"anchor" : "none",
-			"angles" : "0.000 0.000 0.000",
-			"backgroundcolor" : "0.000 0.000 0.000",
-			"color" : "1.000 1.000 1.000",
-			"colorBlendMode" : 0,
-			"copybackground" : true,
-			"font" : "fonts/FSEX302-alt.ttf",
-			"horizontalalign" : "left",
-			"id" : 172,
-			"ledsource" : false,
-			"locktransforms" : true,
-			"name" : "Autotyped Code",
-			"opaquebackground" : true,
-			"origin" : "1332.000 1051.000 0.000",
-			"padding" : 32,
-			"parallaxDepth" : "1.000 1.000",
-			"perspective" : false,
-			"pointsize" : 9.0,
-			"scale" : "1.000 1.000 1.000",
-			"size" : "2.000 2.000",
-			"solid" : true,
-			"text" : 
-			{
-				"script" : "'use strict';\n\nexport var scriptProperties = createScriptProperties()\n\t.addText({\n\t\tname: 'scrollingTextContents',\n\t\tlabel: 'ScrollingText',\n\t\tvalue: 'You shouldn’t see this unless you’re editing, please report it to me.'\n\t})\n\t.addSlider({\n\t\tname: 'outputNoOfLines',\n\t\tlabel: 'Number of lines',\n\t\tvalue: 13,\n\t\tmin: 0,\n\t\tmax: 20,\n\t\tinteger: false\n\t})\n\t.finish();\n\n//var completeOutput = scriptProperties.scrollingTextContents;\n\n//I declare this outside so we're not constantly creating and\n//deleting vars for performance reasons, I don't know if this\n//is necessary\nlet i = 0;\n\n// N.B. replaces spaces with “punctuation spaces” (U+2008)\n// as a workaround for WE eating leading spaces.\nfunction formatText(text){\n\treturn text.replace(/ /g, \" \");\n}\n\n// This does the heavy lifting of removing the older lines\n// from the terminal screen.\nfunction trimOutput(text, noOfLines){\n\tlet splitText = text.split(\"\\n\");\n\tif (splitText.length >= noOfLines){\n\t\ttext = splitText.splice((splitText.length-noOfLines), splitText.length);\n\t} else {\n\t\ttext = splitText; //.splice(splitText.length);\n\t}\n\treturn text.join(\"\\n\");\n}\n\nexport function update(output) {\n\tif (thisLayer.visible) {\n\t\toutput += scriptProperties.scrollingTextContents.charAt(i);  // append character to give the illusion of typing\n\t\tif (i <= scriptProperties.scrollingTextContents.length){  //loops around when it gets to the end of the text\n\t\t\ti++;\n\t\t} else {\n\t\t\toutput += \"\\n\\n\";  //add extra new lines at the end of the text\n\t\t\ti = 0;\n\t\t}\n\t}\n\n\treturn formatText(trimOutput(output, scriptProperties.outputNoOfLines));\n}\n",
-				"scriptproperties" : 
-				{
-					"outputNoOfLines" : 13,
-					"scrollingTextContents" : "struct group_info init_groups={ \n.usage=ATOMIC_INIT(2) \n}; \n \nstruct group_info \n    *groups_alloc(int gidsetsize){ \n  struct group_info *group_info; \n  int nblocks; \n  int i; \n \n  nblocks=( \n    gidsetsize+NGROUPS_PER_BLOCK-1 \n  )/NGROUPS_PER_BLOCK; \n \n  /* Make sure we always allocate at \n  least one indirect block pointer */ \n \n  nblocks=nblocks ? : 1; \n  group_info=kmalloc(sizeof(*group_info) \n  +nblocks*sizeof(gid_t *), GFP_USER); \n  if (!group_info){ \n    return NULL; \n  } \n  group_info->ngroups=gidsetsize; \n  group_info->nblocks=nblocks; \n  atomic_set(&group_info->usage, 1); \n \n  if (gidsetsize<=NGROUPS_SMALL){ \n    group_info->blocks[0]= \n       group_info->small_block; \n  } else { \n    for (i=0; i<nblocks; i++) { \n      gid_t *b; \n      b=(void *)__get_free_page(GFP_USER); \n      if (!b) \n        goto out_undo_partial_alloc; \n      group_info->blocks[i]=b; \n    } \n  } \n  return group_info; \n \nout_undo_partial_alloc: \n  while (--i>=0) { \n    free_page((unsigned long) \n       group_info->blocks[i]); \n  } \n  kfree(group_info); \n  return NULL; \n} \n \nEXPORT_SYMBOL(groups_alloc); \n \nvoid groups_free( \n    struct group_info *group_info) \n{ \n  if (group_info->blocks[0] \n      !=group_info->small_block) { \n    int i; \n    for (i=0; i<group_info->nblocks; i++) \n      free_page((unsigned long) \n        group_info->blocks[i]); \n  } \n  kfree(group_info); \n} \n \nEXPORT_SYMBOL(groups_free); \n \n/* export the group_info \nto a user-space array */ \n \nstatic int groups_to_user( \n    gid_t __user *grouplist, \n    const struct group_info *group_info \n){ \n  int i; \n  unsigned int count=group_info->ngroups; \n \n  for (i=0; i<group_info->nblocks; i++) { \n    unsigned int cp_count=min( \n        NGROUPS_PER_BLOCK, count \n    ); \n    unsigned int len=cp_count*sizeof( \n        *grouplist \n    ); \n \n    if (copy_to_user( \n        grouplist, group_info->blocks[i], len \n    )){ \n      return -EFAULT; \n \n    grouplist+=NGROUPS_PER_BLOCK; \n    count-=cp_count; \n    } \n} \nreturn 0;"
-				},
-				"value" : ""
-			},
-			"verticalalign" : "bottom",
-			"visible" : 
-			{
-				"script" : "'use strict';\n\n/**\n * @param {Boolean} value - for property 'visible'\n */\nexport function update(_value) {\n\tif (thisScene.getLayer(1).scale.z == 2) {return true}\n\telse {return false}\n}\n",
-				"value" : false
-			}
 		},
 		{
 			"alignment" : "center",
